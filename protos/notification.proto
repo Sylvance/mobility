@@ -1,0 +1,117 @@
+syntax = "proto3";
+
+package mobility.services;
+
+service NotificationServices {
+    rpc ListNotifications(ListNotificationsRequest) returns (ListNotificationsResponse) {}
+
+    rpc GetNotification(GetNotificationRequest) returns (GetNotificationResponse) {}
+
+    rpc CreateNotification(CreateNotificationRequest) returns (CreateNotificationResponse) {}
+
+    rpc UpdateNotification(UpdateNotificationRequest) returns (UpdateNotificationResponse) {}
+
+    rpc DeleteNotification(DeleteNotificationRequest) returns (DeleteNotificationResponse) {}
+}
+
+message Notification {
+    string content = 1;
+    string notification_id = 2;
+    string created_at = 3;
+    string received_at = 4;
+    string viewed_at = 5;
+    oneof type {
+        AdminNotification admin_notification = 6;
+        OperatorNotification operator_notification = 7;
+        DriverNotification driver_notification = 8;
+    }
+}
+
+message AdminNotification {
+    string id = 1;
+    string type = 2;
+}
+
+message OperatorNotification {
+    string id = 1;
+    string type = 2;
+}
+
+message DriverNotification {
+    string id = 1;
+    string type = 2;
+}
+
+message NotificationsList {
+    repeated Notification notifications = 1;
+}
+
+message Success {
+    string content = 1;
+    string type = 2;
+}
+
+message Error {
+    repeated string content = 1;
+    string type = 2;
+}
+
+message ListNotificationsRequest {
+    int32 page_size = 1;
+}
+
+message ListNotificationsResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        NotificationsList notifications_list = 3;
+    }
+}
+
+message GetNotificationRequest {
+    string notification_id = 1;
+}
+
+message GetNotificationResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Notification notification = 3;
+    }
+}
+
+message CreateNotificationRequest {
+    Notification notification = 1;
+}
+
+message CreateNotificationResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Notification notification = 3;
+    }
+}
+
+message UpdateNotificationRequest {
+    Notification notification = 1;
+}
+
+message UpdateNotificationResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Notification notification = 3;
+    }
+}
+
+message DeleteNotificationRequest {
+    string notification_id = 1;
+}
+
+message DeleteNotificationResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}

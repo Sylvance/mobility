@@ -1,0 +1,215 @@
+syntax = "proto3";
+
+package mobility.protos.driver;
+
+service DriverServices {
+    rpc ListDrivers(ListDriversRequest) returns (ListDriversResponse) {}
+
+    rpc GetDriver(GetDriverRequest) returns (GetDriverResponse) {}
+
+    rpc CreateDriver(CreateDriverRequest) returns (CreateDriverResponse) {}
+
+    rpc UpdateDriver(UpdateDriverRequest) returns (UpdateDriverResponse) {}
+
+    rpc DeleteDriver(DeleteDriverRequest) returns (DeleteDriverResponse) {}
+
+    rpc AssignFlightToDriver(AssignFlightToDriverRequest) returns (AssignFlightToDriverResponse) {}
+
+    rpc RetrieveFlightAssignedToDriver(RetrieveFlightAssignedToDriverRequest) returns (RetrieveFlightAssignedToDriverResponse) {}
+
+    rpc RetrieveEnergyUsageByDriver(RetrieveEnergyUsageByDriverRequest) returns (RetrieveEnergyUsageByDriverResponse) {}
+
+    rpc RetrieveEnergyUsageByDriverForFlight(RetrieveEnergyUsageByDriverForFlightRequest) returns (RetrieveEnergyUsageByDriverForFlightResponse) {}
+
+    rpc RetrieveDistanceCoveredByDriver(RetrieveDistanceCoveredByDriverRequest) returns (RetrieveDistanceCoveredByDriverResponse) {}
+
+    rpc RetrieveDistanceCoveredByDriverForFlight(RetrieveDistanceCoveredByDriverForFlightRequest) returns (RetrieveDistanceCoveredByDriverForFlightResponse) {}
+
+    rpc MakePaymentByDriverForFlight(MakePaymentByDriverForFlightRequest) returns (MakePaymentByDriverResponse) {}
+
+    rpc GetPaymentByDriverForFlight(GetPaymentByDriverForFlightRequest) returns (GetPaymentByDriverResponse) {}
+}
+
+message Driver {
+    string driver_id = 1;
+    string name = 2;
+    string identification = 3;
+    string phone_number = 4;
+    string created_at = 5;
+    string modified_at = 6;
+    string deleted_at = 7;
+}
+
+message DriversList {
+    repeated Driver drivers = 1;
+}
+
+message Success {
+    string content = 1;
+    string type = 2;
+}
+
+message Error {
+    repeated string content = 1;
+    string type = 2;
+}
+
+message ListDriversRequest {
+    int32 page_size = 1;
+}
+
+message ListDriversResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        DriversList drivers_list = 3;
+    }
+}
+
+message GetDriverRequest {
+    string driver_id = 1;
+}
+
+message GetDriverResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Driver driver = 3;
+    }
+}
+
+message CreateDriverRequest {
+    Driver driver = 1;
+}
+
+message CreateDriverResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Driver driver = 3;
+    }
+}
+
+message UpdateDriverRequest {
+    Driver driver = 1;
+}
+
+message UpdateDriverResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Driver driver = 3;
+    }
+}
+
+message DeleteDriverRequest {
+    string driver_id = 1;
+}
+
+message DeleteDriverResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}
+
+message AssignFlightToDriverRequest {
+    string driver_id = 1;
+}
+
+message AssignFlightToDriverResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}
+
+message RetrieveFlightAssignedToDriverRequest {
+    string driver_id = 1;
+}
+
+message RetrieveFlightAssignedToDriverResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        string current_flight_id = 3;
+    }
+}
+
+message RetrieveEnergyUsageByDriverRequest {
+    string driver_id = 1;
+}
+
+message RetrieveEnergyUsageByDriverResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        int32 total_energy_delta = 3;
+    }
+}
+
+message RetrieveEnergyUsageByDriverForFlightRequest {
+    string driver_id = 1;
+    string flight_id = 2;
+}
+
+message RetrieveEnergyUsageByDriverForFlightResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        int32 flight_total_energy_delta = 3;
+    }
+}
+
+message RetrieveDistanceCoveredByDriverRequest {
+    string driver_id = 1;
+}
+
+message RetrieveDistanceCoveredByDriverResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        int32 total_distance_delta = 3;
+    }
+}
+
+message RetrieveDistanceCoveredByDriverForFlightRequest {
+    string driver_id = 1;
+    string flight_id = 2;
+}
+
+message RetrieveDistanceCoveredByDriverForFlightResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        int32 flight_total_distance_delta = 3;
+    }
+}
+
+message MakePaymentByDriverForFlightRequest {
+    string driver_id = 1;
+    string flight_id = 2;
+}
+
+message MakePaymentByDriverResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}
+
+message GetPaymentByDriverForFlightRequest {
+    string driver_id = 1;
+    string flight_id = 2;
+}
+
+message GetPaymentByDriverResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        string payment_id = 3;
+    }
+}

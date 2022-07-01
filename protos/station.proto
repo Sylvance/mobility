@@ -1,0 +1,131 @@
+syntax = "proto3";
+
+package mobility.services;
+
+service StationServices {
+    rpc ListStations(ListStationsRequest) returns (ListStationsResponse) {}
+
+    rpc GetStation(GetStationRequest) returns (GetStationResponse) {}
+
+    rpc CreateStation(CreateStationRequest) returns (CreateStationResponse) {}
+
+    rpc UpdateStation(UpdateStationRequest) returns (UpdateStationResponse) {}
+
+    rpc DeleteStation(DeleteStationRequest) returns (DeleteStationResponse) {}
+
+    rpc GetBatterySupplyForStation(GetBatterySupplyForStationRequest) returns (GetBatterySupplyForStationResponse) {}
+
+    rpc GetStationAvailableChargingPorts(GetStationAvailableChargingPortsRequest) returns (GetStationAvailableChargingPortsResponse) {}
+
+    rpc GetStationDistanceRelativeToMotorcycle(GetStationDistanceRelativeToMotorcycleRequest) returns (GetStationDistanceRelativeToMotorcycleResponse) {}
+}
+
+message Station {
+    string station_id = 1;
+    string name = 2;
+    string location = 3;
+    string created_at = 4;
+    string modified_at = 5;
+    string deleted_at = 6;
+    int32 battery_count = 7;
+    int32 charging_ports_count = 8;
+}
+
+message StationsList {
+    repeated Station stations = 1;
+}
+
+message Success {
+    string content = 1;
+    string type = 2;
+}
+
+message Error {
+    repeated string content = 1;
+    string type = 2;
+}
+
+message ListStationsRequest {
+    int32 page_size = 1;
+}
+
+message ListStationsResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        StationsList stations_list = 3;
+    }
+}
+
+message GetStationRequest {
+    string station_id = 1;
+}
+
+message GetStationResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Station station = 3;
+    }
+}
+
+message CreateStationRequest {
+    Station station = 1;
+}
+
+message CreateStationResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Station station = 3;
+    }
+}
+
+message UpdateStationRequest {
+    Station station = 1;
+}
+
+message UpdateStationResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Station station = 3;
+    }
+}
+
+message DeleteStationRequest {
+    string station_id = 1;
+}
+
+message DeleteStationResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}
+
+message GetBatterySupplyForStationRequest {
+    string station_id = 1;
+}
+
+message GetBatterySupplyForStationResponse {
+    int32 battery_count = 1;
+}
+
+message GetStationAvailableChargingPortsRequest {
+    string station_id = 1;
+}
+
+message GetStationAvailableChargingPortsResponse {
+    int32 charging_ports_count = 1;
+}
+
+message GetStationDistanceRelativeToMotorcycleRequest {
+    string station_id = 1;
+    string motorcycle_id = 2;
+}
+
+message GetStationDistanceRelativeToMotorcycleResponse {
+    int32 distance_apart = 1;
+}

@@ -1,0 +1,142 @@
+syntax = "proto3";
+
+package mobility.services;
+
+service LocationServices {
+    rpc ListLocations(ListLocationsRequest) returns (ListLocationsResponse) {}
+
+    rpc GetLocation(GetLocationRequest) returns (GetLocationResponse) {}
+
+    rpc CreateLocation(CreateLocationRequest) returns (CreateLocationResponse) {}
+
+    rpc UpdateLocation(UpdateLocationRequest) returns (UpdateLocationResponse) {}
+
+    rpc DeleteLocation(DeleteLocationRequest) returns (DeleteLocationResponse) {}
+
+    rpc StartLocationDataStreamForFlightID(StartLocationDataStreamForFlightIDRequest) returns (StartLocationDataStreamForFlightIDResponse) {}
+
+    rpc StopLocationDataStreamForFlightID(StopLocationDataStreamForFlightIDRequest) returns (StopLocationDataStreamForFlightIDResponse) {}
+
+    rpc AggregateLocationDataStreamForFlightID(AggregateLocationDataStreamForFlightIDRequest) returns (AggregateLocationDataStreamForFlightIDResponse) {}
+}
+
+message Location {
+    string location_id = 1;
+    string flight_id = 2;
+    string latitude = 3;
+    string longitude = 4;
+    string motorcycle_id = 5;
+    string created_at = 6;
+    string modified_on = 7;
+    string ended_at = 8;
+}
+
+message LocationsList {
+    repeated Location locations = 1;
+}
+
+message Success {
+    string content = 1;
+    string type = 2;
+}
+
+message Error {
+    repeated string content = 1;
+    string type = 2;
+}
+
+message ListLocationsRequest {
+    int32 page_size = 1;
+}
+
+message ListLocationsResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        LocationsList locations_list = 3;
+    }
+}
+
+message GetLocationRequest {
+    string location_id = 1;
+}
+
+message GetLocationResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Location location = 3;
+    }
+}
+
+message CreateLocationRequest {
+    Location location = 1;
+}
+
+message CreateLocationResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Location location = 3;
+    }
+}
+
+message UpdateLocationRequest {
+    Location location = 1;
+}
+
+message UpdateLocationResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Location location = 3;
+    }
+}
+
+message DeleteLocationRequest {
+    string location_id = 1;
+}
+
+message DeleteLocationResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}
+
+message StartLocationDataStreamForFlightIDRequest {
+    string flight_id = 1;
+}
+
+message StartLocationDataStreamForFlightIDResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}
+
+message StopLocationDataStreamForFlightIDRequest {
+    string flight_id = 1;
+}
+
+message StopLocationDataStreamForFlightIDResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}
+
+message AggregateLocationDataStreamForFlightIDRequest {
+    string flight_id = 1;
+}
+
+message AggregateLocationDataStreamForFlightIDResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}

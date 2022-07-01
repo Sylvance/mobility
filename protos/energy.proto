@@ -1,0 +1,141 @@
+syntax = "proto3";
+
+package mobility.services;
+
+service EnergyServices {
+    rpc ListEnergys(ListEnergysRequest) returns (ListEnergysResponse) {}
+
+    rpc GetEnergy(GetEnergyRequest) returns (GetEnergyResponse) {}
+
+    rpc CreateEnergy(CreateEnergyRequest) returns (CreateEnergyResponse) {}
+
+    rpc UpdateEnergy(UpdateEnergyRequest) returns (UpdateEnergyResponse) {}
+
+    rpc DeleteEnergy(DeleteEnergyRequest) returns (DeleteEnergyResponse) {}
+
+    rpc StartEnergyDataStreamForFlightID(StartEnergyDataStreamForFlightIDRequest) returns (StartEnergyDataStreamForFlightIDResponse) {}
+
+    rpc StopEnergyDataStreamForFlightID(StopEnergyDataStreamForFlightIDRequest) returns (StopEnergyDataStreamForFlightIDResponse) {}
+
+    rpc AggregateEnergyDataStreamForFlightID(AggregateEnergyDataStreamForFlightIDRequest) returns (AggregateEnergyDataStreamForFlightIDResponse) {}
+}
+
+message Energy {
+    string energy_id = 1;
+    string flight_id = 2;
+    string location_id = 3;
+    int32 energy_delta = 4;
+    string created_at = 5;
+    string modified_on = 6;
+    string ended_at = 7;
+}
+
+message EnergysList {
+    repeated Energy energys = 1;
+}
+
+message Success {
+    string content = 1;
+    string type = 2;
+}
+
+message Error {
+    repeated string content = 1;
+    string type = 2;
+}
+
+message ListEnergysRequest {
+    int32 page_size = 1;
+}
+
+message ListEnergysResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        EnergysList energys_list = 3;
+    }
+}
+
+message GetEnergyRequest {
+    string energy_id = 1;
+}
+
+message GetEnergyResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Energy energy = 3;
+    }
+}
+
+message CreateEnergyRequest {
+    Energy energy = 1;
+}
+
+message CreateEnergyResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Energy energy = 3;
+    }
+}
+
+message UpdateEnergyRequest {
+    Energy energy = 1;
+}
+
+message UpdateEnergyResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Energy energy = 3;
+    }
+}
+
+message DeleteEnergyRequest {
+    string energy_id = 1;
+}
+
+message DeleteEnergyResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}
+
+message StartEnergyDataStreamForFlightIDRequest {
+    string flight_id = 1;
+}
+
+message StartEnergyDataStreamForFlightIDResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}
+
+message StopEnergyDataStreamForFlightIDRequest {
+    string flight_id = 1;
+}
+
+message StopEnergyDataStreamForFlightIDResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}
+
+message AggregateEnergyDataStreamForFlightIDRequest {
+    string flight_id = 1;
+}
+
+message AggregateEnergyDataStreamForFlightIDResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}

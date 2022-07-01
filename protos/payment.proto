@@ -1,0 +1,125 @@
+syntax = "proto3";
+
+package mobility.services;
+
+service PaymentServices {
+    rpc ListPayments(ListPaymentsRequest) returns (ListPaymentsResponse) {}
+
+    rpc GetPayment(GetPaymentRequest) returns (GetPaymentResponse) {}
+
+    rpc CreatePayment(CreatePaymentRequest) returns (CreatePaymentResponse) {}
+
+    rpc UpdatePayment(UpdatePaymentRequest) returns (UpdatePaymentResponse) {}
+
+    rpc DeletePayment(DeletePaymentRequest) returns (DeletePaymentResponse) {}
+
+    rpc CollectPaymentForFlightID(CollectPaymentForFlightIDRequest) returns (CollectPaymentForFlightIDResponse) {}
+
+    rpc CheckIfPaymentDone(CheckIfPaymentDoneRequest) returns (CheckIfPaymentDoneResponse) {}
+}
+
+message Payment {
+    string payment_id = 1;
+    string flight_id = 2;
+    string amount = 3;
+    string currency = 4;
+    string created_at = 5;
+    string modified_at = 6;
+    string fulfilled_on = 7;
+    string fulfilled_by_operator_id = 8;
+    string paid_by_driver_id = 9;
+    bool status = 10;
+}
+
+message PaymentsList {
+    repeated Payment payments = 1;
+}
+
+message Success {
+    string content = 1;
+    string type = 2;
+}
+
+message Error {
+    repeated string content = 1;
+    string type = 2;
+}
+
+message ListPaymentsRequest {
+    int32 page_size = 1;
+}
+
+message ListPaymentsResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        PaymentsList payments_list = 3;
+    }
+}
+
+message GetPaymentRequest {
+    string payment_id = 1;
+}
+
+message GetPaymentResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Payment payment = 3;
+    }
+}
+
+message CreatePaymentRequest {
+    Payment payment = 1;
+}
+
+message CreatePaymentResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Payment payment = 3;
+    }
+}
+
+message UpdatePaymentRequest {
+    Payment payment = 1;
+}
+
+message UpdatePaymentResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Payment payment = 3;
+    }
+}
+
+message DeletePaymentRequest {
+    string payment_id = 1;
+}
+
+message DeletePaymentResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}
+
+message CollectPaymentForFlightIDRequest {
+    string flight_id = 1;
+}
+
+message CollectPaymentForFlightIDResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Payment payment = 3;
+    }
+}
+
+message CheckIfPaymentDoneRequest {
+    string payment_id = 1;
+}
+message CheckIfPaymentDoneResponse {
+    bool status = 1;
+}

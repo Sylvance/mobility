@@ -1,0 +1,179 @@
+syntax = "proto3";
+
+package mobility.services;
+
+service OperatorServices {
+    rpc ListOperators(ListOperatorsRequest) returns (ListOperatorsResponse) {}
+
+    rpc GetOperator(GetOperatorRequest) returns (GetOperatorResponse) {}
+
+    rpc CreateOperator(CreateOperatorRequest) returns (CreateOperatorResponse) {}
+
+    rpc UpdateOperator(UpdateOperatorRequest) returns (UpdateOperatorResponse) {}
+
+    rpc DeleteOperator(DeleteOperatorRequest) returns (DeleteOperatorResponse) {}
+
+    rpc SignInToStation(SignInToStationRequest) returns (SignInToStationResponse) {}
+
+    rpc InitiateFlight(InitiateFlightRequest) returns (InitiateFlightResponse) {}
+
+    rpc TerminateFlight(TerminateFlightRequest) returns (TerminateFlightResponse) {}
+
+    rpc InitiateSwap(InitiateSwapRequest) returns (InitiateSwapResponse) {}
+
+    rpc InitiatePaymentForFlight(InitiatePaymentForFlightRequest) returns (InitiatePaymentForFlightResponse) {}
+}
+
+message Operator {
+    string operator_id = 1;
+    string name = 2;
+    string identification = 3;
+    string phone_number = 4;
+    string created_at = 5;
+    string modified_at = 6;
+    string deleted_at = 7;
+    string current_station_id = 8;
+}
+
+message OperatorsList {
+    repeated Operator operators = 1;
+}
+
+message Success {
+    string content = 1;
+    string type = 2;
+}
+
+message Error {
+    repeated string content = 1;
+    string type = 2;
+}
+
+message ListOperatorsRequest {
+    int32 page_size = 1;
+}
+
+message ListOperatorsResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        OperatorsList operators_list = 3;
+    }
+}
+
+message GetOperatorRequest {
+    string operator_id = 1;
+}
+
+message GetOperatorResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Operator operator = 3;
+    }
+}
+
+message CreateOperatorRequest {
+    Operator operator = 1;
+}
+
+message CreateOperatorResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Operator operator = 3;
+    }
+}
+
+message UpdateOperatorRequest {
+    Operator operator = 1;
+}
+
+message UpdateOperatorResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Operator operator = 3;
+    }
+}
+
+message DeleteOperatorRequest {
+    string operator_id = 1;
+}
+
+message DeleteOperatorResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}
+
+message SignInToStationRequest {
+    string operator_id = 1;
+    string station_id = 2;
+}
+
+message SignInToStationResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}
+
+message InitiateFlightRequest {
+    string initiating_operator_id = 1;
+    string initiating_station_id = 2;
+}
+
+message InitiateFlightResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}
+
+message TerminateFlightRequest {
+    string terminating_operator_id = 1;
+    string terminating_station_id = 2;
+    string flight_id = 3;
+}
+
+message TerminateFlightResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}
+
+message InitiateSwapRequest {
+    string operator_id = 1;
+    string incoming_flight_id = 2;
+    string outgoing_flight_id = 3;
+    string incoming_battery_id = 4;
+    string outgoing_battery_id = 5;
+}
+
+message InitiateSwapResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}
+
+message InitiatePaymentForFlightRequest {
+    string operator_id = 1;
+    string flight_id = 2;
+}
+
+message InitiatePaymentForFlightResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}

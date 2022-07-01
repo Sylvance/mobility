@@ -1,0 +1,141 @@
+syntax = "proto3";
+
+package mobility.services;
+
+service SwapServices {
+    rpc ListSwaps(ListSwapsRequest) returns (ListSwapsResponse) {}
+
+    rpc GetSwap(GetSwapRequest) returns (GetSwapResponse) {}
+
+    rpc CreateSwap(CreateSwapRequest) returns (CreateSwapResponse) {}
+
+    rpc UpdateSwap(UpdateSwapRequest) returns (UpdateSwapResponse) {}
+
+    rpc DeleteSwap(DeleteSwapRequest) returns (DeleteSwapResponse) {}
+
+    rpc SearchSwapByOperatorID (SearchSwapByOperatorIDRequest) returns (SearchSwapByOperatorIDResponse) {}
+
+    rpc SearchSwapByBatteryID (SearchSwapByBatteryIDRequest) returns (SearchSwapByBatteryIDResponse) {}
+
+    rpc SearchSwapByFlightID (SearchSwapByFlightIDRequest) returns (SearchSwapByFlightIDResponse) {}
+}
+
+message Swap {
+    string swap_id = 1;
+    string operator_id = 2;
+    string incoming_flight_id = 3;
+    string outgoing_flight_id = 4;
+    string incoming_battery_id = 5;
+    string outgoing_battery_id = 6;
+    string created_at = 7;
+}
+
+message SwapsList {
+    repeated Swap swaps = 1;
+}
+
+message Success {
+    string content = 1;
+    string type = 2;
+}
+
+message Error {
+    repeated string content = 1;
+    string type = 2;
+}
+
+message ListSwapsRequest {
+    int32 page_size = 1;
+}
+
+message ListSwapsResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        SwapsList swaps_list = 3;
+    }
+}
+
+message GetSwapRequest {
+    string swap_id = 1;
+}
+
+message GetSwapResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Swap swap = 3;
+    }
+}
+
+message CreateSwapRequest {
+    Swap swap = 1;
+}
+
+message CreateSwapResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Swap swap = 3;
+    }
+}
+
+message UpdateSwapRequest {
+    Swap swap = 1;
+}
+
+message UpdateSwapResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Swap swap = 3;
+    }
+}
+
+message DeleteSwapRequest {
+    string swap_id = 1;
+}
+
+message DeleteSwapResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}
+
+message SearchSwapByOperatorIDRequest {
+    string operator_id = 1;
+}
+
+message SearchSwapByOperatorIDResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        SwapsList swaps_list = 3;
+    }
+}
+
+message SearchSwapByBatteryIDRequest {
+    string battery_id = 1;
+}
+
+message SearchSwapByBatteryIDResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        SwapsList swaps_list = 3;
+    }
+}
+
+message SearchSwapByFlightIDRequest {
+    string flight_id = 1;
+}
+
+message SearchSwapByFlightIDResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        SwapsList swaps_list = 3;
+    }
+}

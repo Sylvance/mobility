@@ -1,0 +1,141 @@
+syntax = "proto3";
+
+package mobility.services;
+
+service DistanceServices {
+    rpc ListDistances(ListDistancesRequest) returns (ListDistancesResponse) {}
+
+    rpc GetDistance(GetDistanceRequest) returns (GetDistanceResponse) {}
+
+    rpc CreateDistance(CreateDistanceRequest) returns (CreateDistanceResponse) {}
+
+    rpc UpdateDistance(UpdateDistanceRequest) returns (UpdateDistanceResponse) {}
+
+    rpc DeleteDistance(DeleteDistanceRequest) returns (DeleteDistanceResponse) {}
+
+    rpc StartDistanceDataStreamForFlightID(StartDistanceDataStreamForFlightIDRequest) returns (StartDistanceDataStreamForFlightIDResponse) {}
+
+    rpc StopDistanceDataStreamForFlightID(StopDistanceDataStreamForFlightIDRequest) returns (StopDistanceDataStreamForFlightIDResponse) {}
+
+    rpc AggregateDistanceDataStreamForFlightID(AggregateDistanceDataStreamForFlightIDRequest) returns (AggregateDistanceDataStreamForFlightIDResponse) {}
+}
+
+message Distance {
+    string distance_id = 1;
+    string flight_id = 2;
+    string location_id = 3;
+    string distance_delta = 4;
+    string created_at = 5;
+    string modified_at = 6;
+    string deleted_at = 7;
+}
+
+message DistancesList {
+    repeated Distance distances = 1;
+}
+
+message Success {
+    string content = 1;
+    string type = 2;
+}
+
+message Error {
+    repeated string content = 1;
+    string type = 2;
+}
+
+message ListDistancesRequest {
+    int32 page_size = 1;
+}
+
+message ListDistancesResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        DistancesList distances_list = 3;
+    }
+}
+
+message GetDistanceRequest {
+    string distance_id = 1;
+}
+
+message GetDistanceResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Distance distance = 3;
+    }
+}
+
+message CreateDistanceRequest {
+    Distance distance = 1;
+}
+
+message CreateDistanceResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Distance distance = 3;
+    }
+}
+
+message UpdateDistanceRequest {
+    Distance distance = 1;
+}
+
+message UpdateDistanceResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Distance distance = 3;
+    }
+}
+
+message DeleteDistanceRequest {
+    string distance_id = 1;
+}
+
+message DeleteDistanceResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}
+
+message StartDistanceDataStreamForFlightIDRequest {
+    string flight_id = 1;
+}
+
+message StartDistanceDataStreamForFlightIDResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}
+
+message StopDistanceDataStreamForFlightIDRequest {
+    string flight_id = 1;
+}
+
+message StopDistanceDataStreamForFlightIDResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}
+
+message AggregateDistanceDataStreamForFlightIDRequest {
+    string flight_id = 1;
+}
+
+message AggregateDistanceDataStreamForFlightIDResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}

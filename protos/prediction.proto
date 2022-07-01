@@ -1,0 +1,113 @@
+syntax = "proto3";
+
+package mobility.services;
+
+service PredictionServices {
+    rpc ListPredictions(ListPredictionsRequest) returns (ListPredictionsResponse) {}
+
+    rpc GetPrediction(GetPredictionRequest) returns (GetPredictionResponse) {}
+
+    rpc CreatePrediction(CreatePredictionRequest) returns (CreatePredictionResponse) {}
+
+    rpc UpdatePrediction(UpdatePredictionRequest) returns (UpdatePredictionResponse) {}
+
+    rpc DeletePrediction(DeletePredictionRequest) returns (DeletePredictionResponse) {}
+
+    rpc GenerateBatteryNumberPredictionForStation(GenerateBatteryNumberPredictionForStationRequest) returns (GenerateBatteryNumberPredictionForStationResponse) {}
+}
+
+message Prediction {
+    string prediction_id = 1;
+    string batteries_stock = 2;
+    string batteries_demand = 3;
+    string station_id = 4;
+    string created_at = 5;
+    string modified_at = 6;
+    string deleted_at = 7;
+}
+
+message PredictionsList {
+    repeated Prediction predictions = 1;
+}
+
+message Success {
+    string content = 1;
+    string type = 2;
+}
+
+message Error {
+    repeated string content = 1;
+    string type = 2;
+}
+
+message ListPredictionsRequest {
+    int32 page_size = 1;
+}
+
+message ListPredictionsResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        PredictionsList predictions_list = 3;
+    }
+}
+
+message GetPredictionRequest {
+    string prediction_id = 1;
+}
+
+message GetPredictionResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Prediction prediction = 3;
+    }
+}
+
+message CreatePredictionRequest {
+    Prediction prediction = 1;
+}
+
+message CreatePredictionResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Prediction prediction = 3;
+    }
+}
+
+message UpdatePredictionRequest {
+    Prediction prediction = 1;
+}
+
+message UpdatePredictionResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Prediction prediction = 3;
+    }
+}
+
+message DeletePredictionRequest {
+    string prediction_id = 1;
+}
+
+message DeletePredictionResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}
+
+message GenerateBatteryNumberPredictionForStationRequest {
+    string station_id = 1;
+}
+
+message GenerateBatteryNumberPredictionForStationResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Prediction prediction = 3;
+    }
+}

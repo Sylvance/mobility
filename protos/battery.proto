@@ -1,0 +1,240 @@
+syntax = "proto3";
+
+package mobility.services;
+
+service BatteryServices {
+    rpc ListBatterys(ListBatterysRequest) returns (ListBatterysResponse) {}
+
+    rpc GetBattery(GetBatteryRequest) returns (GetBatteryResponse) {}
+
+    rpc CreateBattery(CreateBatteryRequest) returns (CreateBatteryResponse) {}
+
+    rpc UpdateBattery(UpdateBatteryRequest) returns (UpdateBatteryResponse) {}
+
+    rpc DeleteBattery(DeleteBatteryRequest) returns (DeleteBatteryResponse) {}
+
+    rpc RetrieveBatteryChargePercentage(RetrieveBatteryChargePercentageRequest) returns (RetrieveBatteryChargePercentageResponse) {}
+
+    rpc SetBatteryChargePercentageThreshold(SetBatteryChargePercentageThresholdRequest) returns (SetBatteryChargePercentageThresholdResponse) {}
+
+    rpc CheckBatteryChargeBelowPercentageThreshold(CheckBatteryChargeBelowPercentageThresholdRequest) returns (CheckBatteryChargeBelowPercentageThresholdResponse) {}
+
+    rpc CheckBatteryIsAtStation(CheckBatteryIsAtStationRequest) returns (CheckBatteryIsAtStationResponse) {}
+
+    rpc CheckBatteryIsInFlight(CheckBatteryIsInFlightRequest) returns (CheckBatteryIsInFlightResponse) {}
+
+    rpc AssignBatteryToFlight(AssignBatteryToFlightRequest) returns (AssignBatteryToFlightResponse) {}
+
+    rpc AssignBatteryToMotorcycle(AssignBatteryToMotorcycleRequest) returns (AssignBatteryToMotorcycleResponse) {}
+
+    rpc RetrieveCurrentFlightForBattery(RetrieveCurrentFlightForBatteryRequest) returns (RetrieveCurrentFlightForBatteryResponse) {}
+
+    rpc RetrieveCurrentMotorcycleForBattery(RetrieveCurrentMotorcycleForBatteryRequest) returns (RetrieveCurrentMotorcycleForBatteryResponse) {}
+
+    rpc RetrieveCurrentLocationForBattery(RetrieveCurrentLocationForBatteryRequest) returns (RetrieveCurrentLocationForBatteryResponse) {}
+}
+
+message Battery {
+    string issue_name = 1;
+    string battery_id = 2;
+    string type = 3;
+    string created_at = 4;
+    string modified_at = 5;
+    string deleted_at = 6;
+    int32 charge_percentage = 7;
+    bool below_threshold = 8;
+    bool at_station = 9;
+    bool in_flight = 10;
+    string flight_id = 11;
+}
+
+message BatterysList {
+    repeated Battery batterys = 1;
+}
+
+message Success {
+    string content = 1;
+    string type = 2;
+}
+
+message Error {
+    repeated string content = 1;
+    string type = 2;
+}
+
+message ListBatterysRequest {
+    int32 page_size = 1;
+}
+
+message ListBatterysResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        BatterysList batterys_list = 3;
+    }
+}
+
+message GetBatteryRequest {
+    string battery_id = 1;
+}
+
+message GetBatteryResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Battery battery = 3;
+    }
+}
+
+message CreateBatteryRequest {
+    Battery battery = 1;
+}
+
+message CreateBatteryResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Battery battery = 3;
+    }
+}
+
+message UpdateBatteryRequest {
+    Battery battery = 1;
+}
+
+message UpdateBatteryResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Battery battery = 3;
+    }
+}
+
+message DeleteBatteryRequest {
+    string battery_id = 1;
+}
+
+message DeleteBatteryResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}
+
+message RetrieveBatteryChargePercentageRequest {
+    string battery_id = 1;
+}
+
+message RetrieveBatteryChargePercentageResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        int32 charge_percentage = 3;
+    }
+}
+
+message SetBatteryChargePercentageThresholdRequest {
+    string battery_id = 1;
+    int32 charge_percentage = 2;
+}
+
+message SetBatteryChargePercentageThresholdResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}
+
+message CheckBatteryChargeBelowPercentageThresholdRequest {
+    string battery_id = 1;
+}
+
+message CheckBatteryChargeBelowPercentageThresholdResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        bool below_threshold = 3;
+    }
+}
+
+message CheckBatteryIsAtStationRequest {
+    string battery_id = 1;
+}
+
+message CheckBatteryIsAtStationResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        bool at_station = 3;
+    }
+}
+
+message CheckBatteryIsInFlightRequest {
+    string battery_id = 1;
+}
+
+message CheckBatteryIsInFlightResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        bool in_flight = 3;
+    }
+}
+
+message AssignBatteryToFlightRequest {
+    string battery_id = 1;
+}
+
+message AssignBatteryToFlightResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}
+
+message AssignBatteryToMotorcycleRequest {
+    string battery_id = 1;
+}
+
+message AssignBatteryToMotorcycleResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        Success success = 3;
+    }
+}
+
+message RetrieveCurrentFlightForBatteryRequest {
+    string battery_id = 1;
+}
+
+message RetrieveCurrentFlightForBatteryResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        string flight_id = 3;
+    }
+}
+
+message RetrieveCurrentMotorcycleForBatteryRequest {}
+
+message RetrieveCurrentMotorcycleForBatteryResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        string motorcycle_id = 3;
+    }
+}
+
+message RetrieveCurrentLocationForBatteryRequest {}
+
+message RetrieveCurrentLocationForBatteryResponse {
+    bool successful = 1;
+    oneof result {
+        Error error = 2;
+        string location_id = 3;
+    }
+}
