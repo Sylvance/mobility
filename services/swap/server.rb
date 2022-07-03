@@ -40,7 +40,7 @@ class MobilityServer
     def start_grpc_server
       # create server
       @server = GRPC::RpcServer.new
-      @server.add_http2_port("0.0.0.0:50052", :this_port_is_insecure)
+      @server.add_http2_port("0.0.0.0:50062", :this_port_is_insecure)
       # assign server to a grpc handler
       @server.handle(SwapService)
       @server.run_till_terminated

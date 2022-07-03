@@ -7,7 +7,7 @@ require "mobility"
 
 def client_call
   # 1. connect to server service
-  stub = Mobility::Services::SwapServices::Stub.new('0.0.0.0:50052', :this_channel_is_insecure)
+  stub = Mobility::Services::SwapServices::Stub.new('0.0.0.0:50062', :this_channel_is_insecure)
   # 2. build request object
   req = Mobility::Services::ListSwapsRequest.new(page_size: 1)
   # 3. call the remote method with request object as parameter
