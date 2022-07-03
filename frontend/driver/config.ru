@@ -5,3 +5,9 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 run ApplicationController
+use EnergyUsagesController
+use PaymentHistoriesController
+use PaymentsController
+use AssignedFlightsController
+use FlightsController
+use FlightHistoriesController
