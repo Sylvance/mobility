@@ -17,11 +17,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.DistancesList" do
       repeated :distances, :message, 1, "mobility.services.Distance"
     end
-    add_message "mobility.services.Success" do
+    add_message "mobility.services.DistanceSuccessResponse" do
       optional :content, :string, 1
       optional :type, :string, 2
     end
-    add_message "mobility.services.Error" do
+    add_message "mobility.services.DistanceErrorResponse" do
       repeated :content, :string, 1
       optional :type, :string, 2
     end
@@ -31,7 +31,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.ListDistancesResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.DistanceErrorResponse"
         optional :distances_list, :message, 3, "mobility.services.DistancesList"
       end
     end
@@ -41,7 +41,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.GetDistanceResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.DistanceErrorResponse"
         optional :distance, :message, 3, "mobility.services.Distance"
       end
     end
@@ -51,7 +51,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.CreateDistanceResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.DistanceErrorResponse"
         optional :distance, :message, 3, "mobility.services.Distance"
       end
     end
@@ -61,7 +61,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.UpdateDistanceResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.DistanceErrorResponse"
         optional :distance, :message, 3, "mobility.services.Distance"
       end
     end
@@ -71,8 +71,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.DeleteDistanceResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.DistanceErrorResponse"
+        optional :success, :message, 3, "mobility.services.DistanceSuccessResponse"
       end
     end
     add_message "mobility.services.StartDistanceDataStreamForFlightIDRequest" do
@@ -81,8 +81,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.StartDistanceDataStreamForFlightIDResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.DistanceErrorResponse"
+        optional :success, :message, 3, "mobility.services.DistanceSuccessResponse"
       end
     end
     add_message "mobility.services.StopDistanceDataStreamForFlightIDRequest" do
@@ -91,8 +91,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.StopDistanceDataStreamForFlightIDResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.DistanceErrorResponse"
+        optional :success, :message, 3, "mobility.services.DistanceSuccessResponse"
       end
     end
     add_message "mobility.services.AggregateDistanceDataStreamForFlightIDRequest" do
@@ -101,8 +101,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.AggregateDistanceDataStreamForFlightIDResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.DistanceErrorResponse"
+        optional :success, :message, 3, "mobility.services.DistanceSuccessResponse"
       end
     end
   end
@@ -112,8 +112,8 @@ module Mobility
   module Services
     Distance = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Distance").msgclass
     DistancesList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.DistancesList").msgclass
-    Success = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Success").msgclass
-    Error = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Error").msgclass
+    DistanceSuccessResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.DistanceSuccessResponse").msgclass
+    DistanceErrorResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.DistanceErrorResponse").msgclass
     ListDistancesRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListDistancesRequest").msgclass
     ListDistancesResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListDistancesResponse").msgclass
     GetDistanceRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.GetDistanceRequest").msgclass

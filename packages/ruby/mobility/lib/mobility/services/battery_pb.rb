@@ -21,11 +21,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.BatterysList" do
       repeated :batterys, :message, 1, "mobility.services.Battery"
     end
-    add_message "mobility.services.Success" do
+    add_message "mobility.services.BatterySuccessResponse" do
       optional :content, :string, 1
       optional :type, :string, 2
     end
-    add_message "mobility.services.Error" do
+    add_message "mobility.services.BatteryErrorResponse" do
       repeated :content, :string, 1
       optional :type, :string, 2
     end
@@ -35,7 +35,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.ListBatterysResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.BatteryErrorResponse"
         optional :batterys_list, :message, 3, "mobility.services.BatterysList"
       end
     end
@@ -45,7 +45,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.GetBatteryResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.BatteryErrorResponse"
         optional :battery, :message, 3, "mobility.services.Battery"
       end
     end
@@ -55,7 +55,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.CreateBatteryResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.BatteryErrorResponse"
         optional :battery, :message, 3, "mobility.services.Battery"
       end
     end
@@ -65,7 +65,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.UpdateBatteryResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.BatteryErrorResponse"
         optional :battery, :message, 3, "mobility.services.Battery"
       end
     end
@@ -75,8 +75,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.DeleteBatteryResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.BatteryErrorResponse"
+        optional :success, :message, 3, "mobility.services.BatterySuccessResponse"
       end
     end
     add_message "mobility.services.RetrieveBatteryChargePercentageRequest" do
@@ -85,7 +85,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.RetrieveBatteryChargePercentageResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.BatteryErrorResponse"
         optional :charge_percentage, :int32, 3
       end
     end
@@ -96,8 +96,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.SetBatteryChargePercentageThresholdResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.BatteryErrorResponse"
+        optional :success, :message, 3, "mobility.services.BatterySuccessResponse"
       end
     end
     add_message "mobility.services.CheckBatteryChargeBelowPercentageThresholdRequest" do
@@ -106,7 +106,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.CheckBatteryChargeBelowPercentageThresholdResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.BatteryErrorResponse"
         optional :below_threshold, :bool, 3
       end
     end
@@ -116,7 +116,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.CheckBatteryIsAtStationResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.BatteryErrorResponse"
         optional :at_station, :bool, 3
       end
     end
@@ -126,7 +126,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.CheckBatteryIsInFlightResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.BatteryErrorResponse"
         optional :in_flight, :bool, 3
       end
     end
@@ -136,8 +136,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.AssignBatteryToFlightResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.BatteryErrorResponse"
+        optional :success, :message, 3, "mobility.services.BatterySuccessResponse"
       end
     end
     add_message "mobility.services.AssignBatteryToMotorcycleRequest" do
@@ -146,8 +146,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.AssignBatteryToMotorcycleResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.BatteryErrorResponse"
+        optional :success, :message, 3, "mobility.services.BatterySuccessResponse"
       end
     end
     add_message "mobility.services.RetrieveCurrentFlightForBatteryRequest" do
@@ -156,7 +156,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.RetrieveCurrentFlightForBatteryResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.BatteryErrorResponse"
         optional :flight_id, :string, 3
       end
     end
@@ -165,7 +165,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.RetrieveCurrentMotorcycleForBatteryResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.BatteryErrorResponse"
         optional :motorcycle_id, :string, 3
       end
     end
@@ -174,7 +174,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.RetrieveCurrentLocationForBatteryResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.BatteryErrorResponse"
         optional :location_id, :string, 3
       end
     end
@@ -185,8 +185,8 @@ module Mobility
   module Services
     Battery = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Battery").msgclass
     BatterysList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.BatterysList").msgclass
-    Success = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Success").msgclass
-    Error = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Error").msgclass
+    BatterySuccessResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.BatterySuccessResponse").msgclass
+    BatteryErrorResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.BatteryErrorResponse").msgclass
     ListBatterysRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListBatterysRequest").msgclass
     ListBatterysResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListBatterysResponse").msgclass
     GetBatteryRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.GetBatteryRequest").msgclass

@@ -34,12 +34,12 @@ message SwapsList {
     repeated Swap swaps = 1;
 }
 
-message Success {
+message SwapSuccessResponse {
     string content = 1;
     string type = 2;
 }
 
-message Error {
+message SwapErrorResponse {
     repeated string content = 1;
     string type = 2;
 }
@@ -51,7 +51,7 @@ message ListSwapsRequest {
 message ListSwapsResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        SwapErrorResponse error = 2;
         SwapsList swaps_list = 3;
     }
 }
@@ -63,7 +63,7 @@ message GetSwapRequest {
 message GetSwapResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        SwapErrorResponse error = 2;
         Swap swap = 3;
     }
 }
@@ -75,7 +75,7 @@ message CreateSwapRequest {
 message CreateSwapResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        SwapErrorResponse error = 2;
         Swap swap = 3;
     }
 }
@@ -87,7 +87,7 @@ message UpdateSwapRequest {
 message UpdateSwapResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        SwapErrorResponse error = 2;
         Swap swap = 3;
     }
 }
@@ -99,8 +99,8 @@ message DeleteSwapRequest {
 message DeleteSwapResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
-        Success success = 3;
+        SwapErrorResponse error = 2;
+        SwapSuccessResponse success = 3;
     }
 }
 
@@ -111,7 +111,7 @@ message SearchSwapByOperatorIDRequest {
 message SearchSwapByOperatorIDResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        SwapErrorResponse error = 2;
         SwapsList swaps_list = 3;
     }
 }
@@ -123,7 +123,7 @@ message SearchSwapByBatteryIDRequest {
 message SearchSwapByBatteryIDResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        SwapErrorResponse error = 2;
         SwapsList swaps_list = 3;
     }
 }
@@ -135,7 +135,7 @@ message SearchSwapByFlightIDRequest {
 message SearchSwapByFlightIDResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        SwapErrorResponse error = 2;
         SwapsList swaps_list = 3;
     }
 }

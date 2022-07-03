@@ -17,11 +17,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.EnergysList" do
       repeated :energys, :message, 1, "mobility.services.Energy"
     end
-    add_message "mobility.services.Success" do
+    add_message "mobility.services.EnergySuccessResponse" do
       optional :content, :string, 1
       optional :type, :string, 2
     end
-    add_message "mobility.services.Error" do
+    add_message "mobility.services.EnergyErrorResponse" do
       repeated :content, :string, 1
       optional :type, :string, 2
     end
@@ -31,7 +31,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.ListEnergysResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.EnergyErrorResponse"
         optional :energys_list, :message, 3, "mobility.services.EnergysList"
       end
     end
@@ -41,7 +41,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.GetEnergyResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.EnergyErrorResponse"
         optional :energy, :message, 3, "mobility.services.Energy"
       end
     end
@@ -51,7 +51,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.CreateEnergyResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.EnergyErrorResponse"
         optional :energy, :message, 3, "mobility.services.Energy"
       end
     end
@@ -61,7 +61,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.UpdateEnergyResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.EnergyErrorResponse"
         optional :energy, :message, 3, "mobility.services.Energy"
       end
     end
@@ -71,8 +71,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.DeleteEnergyResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.EnergyErrorResponse"
+        optional :success, :message, 3, "mobility.services.EnergySuccessResponse"
       end
     end
     add_message "mobility.services.StartEnergyDataStreamForFlightIDRequest" do
@@ -81,8 +81,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.StartEnergyDataStreamForFlightIDResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.EnergyErrorResponse"
+        optional :success, :message, 3, "mobility.services.EnergySuccessResponse"
       end
     end
     add_message "mobility.services.StopEnergyDataStreamForFlightIDRequest" do
@@ -91,8 +91,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.StopEnergyDataStreamForFlightIDResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.EnergyErrorResponse"
+        optional :success, :message, 3, "mobility.services.EnergySuccessResponse"
       end
     end
     add_message "mobility.services.AggregateEnergyDataStreamForFlightIDRequest" do
@@ -101,8 +101,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.AggregateEnergyDataStreamForFlightIDResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.EnergyErrorResponse"
+        optional :success, :message, 3, "mobility.services.EnergySuccessResponse"
       end
     end
   end
@@ -112,8 +112,8 @@ module Mobility
   module Services
     Energy = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Energy").msgclass
     EnergysList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.EnergysList").msgclass
-    Success = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Success").msgclass
-    Error = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Error").msgclass
+    EnergySuccessResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.EnergySuccessResponse").msgclass
+    EnergyErrorResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.EnergyErrorResponse").msgclass
     ListEnergysRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListEnergysRequest").msgclass
     ListEnergysResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListEnergysResponse").msgclass
     GetEnergyRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.GetEnergyRequest").msgclass

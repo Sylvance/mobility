@@ -34,12 +34,12 @@ message EnergysList {
     repeated Energy energys = 1;
 }
 
-message Success {
+message EnergySuccessResponse {
     string content = 1;
     string type = 2;
 }
 
-message Error {
+message EnergyErrorResponse {
     repeated string content = 1;
     string type = 2;
 }
@@ -51,7 +51,7 @@ message ListEnergysRequest {
 message ListEnergysResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        EnergyErrorResponse error = 2;
         EnergysList energys_list = 3;
     }
 }
@@ -63,7 +63,7 @@ message GetEnergyRequest {
 message GetEnergyResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        EnergyErrorResponse error = 2;
         Energy energy = 3;
     }
 }
@@ -75,7 +75,7 @@ message CreateEnergyRequest {
 message CreateEnergyResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        EnergyErrorResponse error = 2;
         Energy energy = 3;
     }
 }
@@ -87,7 +87,7 @@ message UpdateEnergyRequest {
 message UpdateEnergyResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        EnergyErrorResponse error = 2;
         Energy energy = 3;
     }
 }
@@ -99,8 +99,8 @@ message DeleteEnergyRequest {
 message DeleteEnergyResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
-        Success success = 3;
+        EnergyErrorResponse error = 2;
+        EnergySuccessResponse success = 3;
     }
 }
 
@@ -111,8 +111,8 @@ message StartEnergyDataStreamForFlightIDRequest {
 message StartEnergyDataStreamForFlightIDResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
-        Success success = 3;
+        EnergyErrorResponse error = 2;
+        EnergySuccessResponse success = 3;
     }
 }
 
@@ -123,8 +123,8 @@ message StopEnergyDataStreamForFlightIDRequest {
 message StopEnergyDataStreamForFlightIDResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
-        Success success = 3;
+        EnergyErrorResponse error = 2;
+        EnergySuccessResponse success = 3;
     }
 }
 
@@ -135,7 +135,7 @@ message AggregateEnergyDataStreamForFlightIDRequest {
 message AggregateEnergyDataStreamForFlightIDResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
-        Success success = 3;
+        EnergyErrorResponse error = 2;
+        EnergySuccessResponse success = 3;
     }
 }

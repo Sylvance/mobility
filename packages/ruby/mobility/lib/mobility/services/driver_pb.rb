@@ -5,7 +5,7 @@ require 'google/protobuf'
 
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("driver.proto", :syntax => :proto3) do
-    add_message "mobility.protos.driver.Driver" do
+    add_message "mobility.services.Driver" do
       optional :driver_id, :string, 1
       optional :name, :string, 2
       optional :identification, :string, 3
@@ -14,148 +14,148 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :modified_at, :string, 6
       optional :deleted_at, :string, 7
     end
-    add_message "mobility.protos.driver.DriversList" do
-      repeated :drivers, :message, 1, "mobility.protos.driver.Driver"
+    add_message "mobility.services.DriversList" do
+      repeated :drivers, :message, 1, "mobility.services.Driver"
     end
-    add_message "mobility.protos.driver.Success" do
+    add_message "mobility.services.DriverSuccessResponse" do
       optional :content, :string, 1
       optional :type, :string, 2
     end
-    add_message "mobility.protos.driver.Error" do
+    add_message "mobility.services.DriverErrorResponse" do
       repeated :content, :string, 1
       optional :type, :string, 2
     end
-    add_message "mobility.protos.driver.ListDriversRequest" do
+    add_message "mobility.services.ListDriversRequest" do
       optional :page_size, :int32, 1
     end
-    add_message "mobility.protos.driver.ListDriversResponse" do
+    add_message "mobility.services.ListDriversResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.protos.driver.Error"
-        optional :drivers_list, :message, 3, "mobility.protos.driver.DriversList"
+        optional :error, :message, 2, "mobility.services.DriverErrorResponse"
+        optional :drivers_list, :message, 3, "mobility.services.DriversList"
       end
     end
-    add_message "mobility.protos.driver.GetDriverRequest" do
+    add_message "mobility.services.GetDriverRequest" do
       optional :driver_id, :string, 1
     end
-    add_message "mobility.protos.driver.GetDriverResponse" do
+    add_message "mobility.services.GetDriverResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.protos.driver.Error"
-        optional :driver, :message, 3, "mobility.protos.driver.Driver"
+        optional :error, :message, 2, "mobility.services.DriverErrorResponse"
+        optional :driver, :message, 3, "mobility.services.Driver"
       end
     end
-    add_message "mobility.protos.driver.CreateDriverRequest" do
-      optional :driver, :message, 1, "mobility.protos.driver.Driver"
+    add_message "mobility.services.CreateDriverRequest" do
+      optional :driver, :message, 1, "mobility.services.Driver"
     end
-    add_message "mobility.protos.driver.CreateDriverResponse" do
+    add_message "mobility.services.CreateDriverResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.protos.driver.Error"
-        optional :driver, :message, 3, "mobility.protos.driver.Driver"
+        optional :error, :message, 2, "mobility.services.DriverErrorResponse"
+        optional :driver, :message, 3, "mobility.services.Driver"
       end
     end
-    add_message "mobility.protos.driver.UpdateDriverRequest" do
-      optional :driver, :message, 1, "mobility.protos.driver.Driver"
+    add_message "mobility.services.UpdateDriverRequest" do
+      optional :driver, :message, 1, "mobility.services.Driver"
     end
-    add_message "mobility.protos.driver.UpdateDriverResponse" do
+    add_message "mobility.services.UpdateDriverResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.protos.driver.Error"
-        optional :driver, :message, 3, "mobility.protos.driver.Driver"
+        optional :error, :message, 2, "mobility.services.DriverErrorResponse"
+        optional :driver, :message, 3, "mobility.services.Driver"
       end
     end
-    add_message "mobility.protos.driver.DeleteDriverRequest" do
+    add_message "mobility.services.DeleteDriverRequest" do
       optional :driver_id, :string, 1
     end
-    add_message "mobility.protos.driver.DeleteDriverResponse" do
+    add_message "mobility.services.DeleteDriverResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.protos.driver.Error"
-        optional :success, :message, 3, "mobility.protos.driver.Success"
+        optional :error, :message, 2, "mobility.services.DriverErrorResponse"
+        optional :success, :message, 3, "mobility.services.DriverSuccessResponse"
       end
     end
-    add_message "mobility.protos.driver.AssignFlightToDriverRequest" do
+    add_message "mobility.services.AssignFlightToDriverRequest" do
       optional :driver_id, :string, 1
     end
-    add_message "mobility.protos.driver.AssignFlightToDriverResponse" do
+    add_message "mobility.services.AssignFlightToDriverResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.protos.driver.Error"
-        optional :success, :message, 3, "mobility.protos.driver.Success"
+        optional :error, :message, 2, "mobility.services.DriverErrorResponse"
+        optional :success, :message, 3, "mobility.services.DriverSuccessResponse"
       end
     end
-    add_message "mobility.protos.driver.RetrieveFlightAssignedToDriverRequest" do
+    add_message "mobility.services.RetrieveFlightAssignedToDriverRequest" do
       optional :driver_id, :string, 1
     end
-    add_message "mobility.protos.driver.RetrieveFlightAssignedToDriverResponse" do
+    add_message "mobility.services.RetrieveFlightAssignedToDriverResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.protos.driver.Error"
+        optional :error, :message, 2, "mobility.services.DriverErrorResponse"
         optional :current_flight_id, :string, 3
       end
     end
-    add_message "mobility.protos.driver.RetrieveEnergyUsageByDriverRequest" do
+    add_message "mobility.services.RetrieveEnergyUsageByDriverRequest" do
       optional :driver_id, :string, 1
     end
-    add_message "mobility.protos.driver.RetrieveEnergyUsageByDriverResponse" do
+    add_message "mobility.services.RetrieveEnergyUsageByDriverResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.protos.driver.Error"
+        optional :error, :message, 2, "mobility.services.DriverErrorResponse"
         optional :total_energy_delta, :int32, 3
       end
     end
-    add_message "mobility.protos.driver.RetrieveEnergyUsageByDriverForFlightRequest" do
+    add_message "mobility.services.RetrieveEnergyUsageByDriverForFlightRequest" do
       optional :driver_id, :string, 1
       optional :flight_id, :string, 2
     end
-    add_message "mobility.protos.driver.RetrieveEnergyUsageByDriverForFlightResponse" do
+    add_message "mobility.services.RetrieveEnergyUsageByDriverForFlightResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.protos.driver.Error"
+        optional :error, :message, 2, "mobility.services.DriverErrorResponse"
         optional :flight_total_energy_delta, :int32, 3
       end
     end
-    add_message "mobility.protos.driver.RetrieveDistanceCoveredByDriverRequest" do
+    add_message "mobility.services.RetrieveDistanceCoveredByDriverRequest" do
       optional :driver_id, :string, 1
     end
-    add_message "mobility.protos.driver.RetrieveDistanceCoveredByDriverResponse" do
+    add_message "mobility.services.RetrieveDistanceCoveredByDriverResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.protos.driver.Error"
+        optional :error, :message, 2, "mobility.services.DriverErrorResponse"
         optional :total_distance_delta, :int32, 3
       end
     end
-    add_message "mobility.protos.driver.RetrieveDistanceCoveredByDriverForFlightRequest" do
+    add_message "mobility.services.RetrieveDistanceCoveredByDriverForFlightRequest" do
       optional :driver_id, :string, 1
       optional :flight_id, :string, 2
     end
-    add_message "mobility.protos.driver.RetrieveDistanceCoveredByDriverForFlightResponse" do
+    add_message "mobility.services.RetrieveDistanceCoveredByDriverForFlightResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.protos.driver.Error"
+        optional :error, :message, 2, "mobility.services.DriverErrorResponse"
         optional :flight_total_distance_delta, :int32, 3
       end
     end
-    add_message "mobility.protos.driver.MakePaymentByDriverForFlightRequest" do
+    add_message "mobility.services.MakePaymentByDriverForFlightRequest" do
       optional :driver_id, :string, 1
       optional :flight_id, :string, 2
     end
-    add_message "mobility.protos.driver.MakePaymentByDriverResponse" do
+    add_message "mobility.services.MakePaymentByDriverResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.protos.driver.Error"
-        optional :success, :message, 3, "mobility.protos.driver.Success"
+        optional :error, :message, 2, "mobility.services.DriverErrorResponse"
+        optional :success, :message, 3, "mobility.services.DriverSuccessResponse"
       end
     end
-    add_message "mobility.protos.driver.GetPaymentByDriverForFlightRequest" do
+    add_message "mobility.services.GetPaymentByDriverForFlightRequest" do
       optional :driver_id, :string, 1
       optional :flight_id, :string, 2
     end
-    add_message "mobility.protos.driver.GetPaymentByDriverResponse" do
+    add_message "mobility.services.GetPaymentByDriverResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.protos.driver.Error"
+        optional :error, :message, 2, "mobility.services.DriverErrorResponse"
         optional :payment_id, :string, 3
       end
     end
@@ -163,38 +163,36 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
 end
 
 module Mobility
-  module Protos
-    module Driver
-      Driver = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.Driver").msgclass
-      DriversList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.DriversList").msgclass
-      Success = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.Success").msgclass
-      Error = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.Error").msgclass
-      ListDriversRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.ListDriversRequest").msgclass
-      ListDriversResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.ListDriversResponse").msgclass
-      GetDriverRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.GetDriverRequest").msgclass
-      GetDriverResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.GetDriverResponse").msgclass
-      CreateDriverRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.CreateDriverRequest").msgclass
-      CreateDriverResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.CreateDriverResponse").msgclass
-      UpdateDriverRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.UpdateDriverRequest").msgclass
-      UpdateDriverResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.UpdateDriverResponse").msgclass
-      DeleteDriverRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.DeleteDriverRequest").msgclass
-      DeleteDriverResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.DeleteDriverResponse").msgclass
-      AssignFlightToDriverRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.AssignFlightToDriverRequest").msgclass
-      AssignFlightToDriverResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.AssignFlightToDriverResponse").msgclass
-      RetrieveFlightAssignedToDriverRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.RetrieveFlightAssignedToDriverRequest").msgclass
-      RetrieveFlightAssignedToDriverResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.RetrieveFlightAssignedToDriverResponse").msgclass
-      RetrieveEnergyUsageByDriverRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.RetrieveEnergyUsageByDriverRequest").msgclass
-      RetrieveEnergyUsageByDriverResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.RetrieveEnergyUsageByDriverResponse").msgclass
-      RetrieveEnergyUsageByDriverForFlightRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.RetrieveEnergyUsageByDriverForFlightRequest").msgclass
-      RetrieveEnergyUsageByDriverForFlightResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.RetrieveEnergyUsageByDriverForFlightResponse").msgclass
-      RetrieveDistanceCoveredByDriverRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.RetrieveDistanceCoveredByDriverRequest").msgclass
-      RetrieveDistanceCoveredByDriverResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.RetrieveDistanceCoveredByDriverResponse").msgclass
-      RetrieveDistanceCoveredByDriverForFlightRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.RetrieveDistanceCoveredByDriverForFlightRequest").msgclass
-      RetrieveDistanceCoveredByDriverForFlightResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.RetrieveDistanceCoveredByDriverForFlightResponse").msgclass
-      MakePaymentByDriverForFlightRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.MakePaymentByDriverForFlightRequest").msgclass
-      MakePaymentByDriverResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.MakePaymentByDriverResponse").msgclass
-      GetPaymentByDriverForFlightRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.GetPaymentByDriverForFlightRequest").msgclass
-      GetPaymentByDriverResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.protos.driver.GetPaymentByDriverResponse").msgclass
-    end
+  module Services
+    Driver = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Driver").msgclass
+    DriversList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.DriversList").msgclass
+    DriverSuccessResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.DriverSuccessResponse").msgclass
+    DriverErrorResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.DriverErrorResponse").msgclass
+    ListDriversRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListDriversRequest").msgclass
+    ListDriversResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListDriversResponse").msgclass
+    GetDriverRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.GetDriverRequest").msgclass
+    GetDriverResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.GetDriverResponse").msgclass
+    CreateDriverRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.CreateDriverRequest").msgclass
+    CreateDriverResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.CreateDriverResponse").msgclass
+    UpdateDriverRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.UpdateDriverRequest").msgclass
+    UpdateDriverResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.UpdateDriverResponse").msgclass
+    DeleteDriverRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.DeleteDriverRequest").msgclass
+    DeleteDriverResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.DeleteDriverResponse").msgclass
+    AssignFlightToDriverRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.AssignFlightToDriverRequest").msgclass
+    AssignFlightToDriverResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.AssignFlightToDriverResponse").msgclass
+    RetrieveFlightAssignedToDriverRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.RetrieveFlightAssignedToDriverRequest").msgclass
+    RetrieveFlightAssignedToDriverResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.RetrieveFlightAssignedToDriverResponse").msgclass
+    RetrieveEnergyUsageByDriverRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.RetrieveEnergyUsageByDriverRequest").msgclass
+    RetrieveEnergyUsageByDriverResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.RetrieveEnergyUsageByDriverResponse").msgclass
+    RetrieveEnergyUsageByDriverForFlightRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.RetrieveEnergyUsageByDriverForFlightRequest").msgclass
+    RetrieveEnergyUsageByDriverForFlightResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.RetrieveEnergyUsageByDriverForFlightResponse").msgclass
+    RetrieveDistanceCoveredByDriverRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.RetrieveDistanceCoveredByDriverRequest").msgclass
+    RetrieveDistanceCoveredByDriverResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.RetrieveDistanceCoveredByDriverResponse").msgclass
+    RetrieveDistanceCoveredByDriverForFlightRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.RetrieveDistanceCoveredByDriverForFlightRequest").msgclass
+    RetrieveDistanceCoveredByDriverForFlightResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.RetrieveDistanceCoveredByDriverForFlightResponse").msgclass
+    MakePaymentByDriverForFlightRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.MakePaymentByDriverForFlightRequest").msgclass
+    MakePaymentByDriverResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.MakePaymentByDriverResponse").msgclass
+    GetPaymentByDriverForFlightRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.GetPaymentByDriverForFlightRequest").msgclass
+    GetPaymentByDriverResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.GetPaymentByDriverResponse").msgclass
   end
 end

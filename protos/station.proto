@@ -35,12 +35,12 @@ message StationsList {
     repeated Station stations = 1;
 }
 
-message Success {
+message StationSuccessResponse {
     string content = 1;
     string type = 2;
 }
 
-message Error {
+message StationErrorResponse {
     repeated string content = 1;
     string type = 2;
 }
@@ -52,7 +52,7 @@ message ListStationsRequest {
 message ListStationsResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        StationErrorResponse error = 2;
         StationsList stations_list = 3;
     }
 }
@@ -64,7 +64,7 @@ message GetStationRequest {
 message GetStationResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        StationErrorResponse error = 2;
         Station station = 3;
     }
 }
@@ -76,7 +76,7 @@ message CreateStationRequest {
 message CreateStationResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        StationErrorResponse error = 2;
         Station station = 3;
     }
 }
@@ -88,7 +88,7 @@ message UpdateStationRequest {
 message UpdateStationResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        StationErrorResponse error = 2;
         Station station = 3;
     }
 }
@@ -100,8 +100,8 @@ message DeleteStationRequest {
 message DeleteStationResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
-        Success success = 3;
+        StationErrorResponse error = 2;
+        StationSuccessResponse success = 3;
     }
 }
 

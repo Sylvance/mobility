@@ -34,12 +34,12 @@ message DistancesList {
     repeated Distance distances = 1;
 }
 
-message Success {
+message DistanceSuccessResponse {
     string content = 1;
     string type = 2;
 }
 
-message Error {
+message DistanceErrorResponse {
     repeated string content = 1;
     string type = 2;
 }
@@ -51,7 +51,7 @@ message ListDistancesRequest {
 message ListDistancesResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        DistanceErrorResponse error = 2;
         DistancesList distances_list = 3;
     }
 }
@@ -63,7 +63,7 @@ message GetDistanceRequest {
 message GetDistanceResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        DistanceErrorResponse error = 2;
         Distance distance = 3;
     }
 }
@@ -75,7 +75,7 @@ message CreateDistanceRequest {
 message CreateDistanceResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        DistanceErrorResponse error = 2;
         Distance distance = 3;
     }
 }
@@ -87,7 +87,7 @@ message UpdateDistanceRequest {
 message UpdateDistanceResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        DistanceErrorResponse error = 2;
         Distance distance = 3;
     }
 }
@@ -99,8 +99,8 @@ message DeleteDistanceRequest {
 message DeleteDistanceResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
-        Success success = 3;
+        DistanceErrorResponse error = 2;
+        DistanceSuccessResponse success = 3;
     }
 }
 
@@ -111,8 +111,8 @@ message StartDistanceDataStreamForFlightIDRequest {
 message StartDistanceDataStreamForFlightIDResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
-        Success success = 3;
+        DistanceErrorResponse error = 2;
+        DistanceSuccessResponse success = 3;
     }
 }
 
@@ -123,8 +123,8 @@ message StopDistanceDataStreamForFlightIDRequest {
 message StopDistanceDataStreamForFlightIDResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
-        Success success = 3;
+        DistanceErrorResponse error = 2;
+        DistanceSuccessResponse success = 3;
     }
 }
 
@@ -135,7 +135,7 @@ message AggregateDistanceDataStreamForFlightIDRequest {
 message AggregateDistanceDataStreamForFlightIDResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
-        Success success = 3;
+        DistanceErrorResponse error = 2;
+        DistanceSuccessResponse success = 3;
     }
 }

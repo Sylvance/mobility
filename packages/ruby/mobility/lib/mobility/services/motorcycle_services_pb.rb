@@ -2,7 +2,7 @@
 # Source: motorcycle.proto for package 'mobility.services'
 
 require 'grpc'
-require_relative './motorcycle_pb'
+require_relative 'motorcycle_pb'
 
 module Mobility
   module Services

@@ -17,11 +17,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.PredictionsList" do
       repeated :predictions, :message, 1, "mobility.services.Prediction"
     end
-    add_message "mobility.services.Success" do
+    add_message "mobility.services.PredictionSuccessResponse" do
       optional :content, :string, 1
       optional :type, :string, 2
     end
-    add_message "mobility.services.Error" do
+    add_message "mobility.services.PredictionErrorResponse" do
       repeated :content, :string, 1
       optional :type, :string, 2
     end
@@ -31,7 +31,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.ListPredictionsResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.PredictionErrorResponse"
         optional :predictions_list, :message, 3, "mobility.services.PredictionsList"
       end
     end
@@ -41,7 +41,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.GetPredictionResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.PredictionErrorResponse"
         optional :prediction, :message, 3, "mobility.services.Prediction"
       end
     end
@@ -51,7 +51,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.CreatePredictionResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.PredictionErrorResponse"
         optional :prediction, :message, 3, "mobility.services.Prediction"
       end
     end
@@ -61,7 +61,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.UpdatePredictionResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.PredictionErrorResponse"
         optional :prediction, :message, 3, "mobility.services.Prediction"
       end
     end
@@ -71,8 +71,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.DeletePredictionResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.PredictionErrorResponse"
+        optional :success, :message, 3, "mobility.services.PredictionSuccessResponse"
       end
     end
     add_message "mobility.services.GenerateBatteryNumberPredictionForStationRequest" do
@@ -81,7 +81,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.GenerateBatteryNumberPredictionForStationResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.PredictionErrorResponse"
         optional :prediction, :message, 3, "mobility.services.Prediction"
       end
     end
@@ -92,8 +92,8 @@ module Mobility
   module Services
     Prediction = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Prediction").msgclass
     PredictionsList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.PredictionsList").msgclass
-    Success = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Success").msgclass
-    Error = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Error").msgclass
+    PredictionSuccessResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.PredictionSuccessResponse").msgclass
+    PredictionErrorResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.PredictionErrorResponse").msgclass
     ListPredictionsRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListPredictionsRequest").msgclass
     ListPredictionsResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListPredictionsResponse").msgclass
     GetPredictionRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.GetPredictionRequest").msgclass

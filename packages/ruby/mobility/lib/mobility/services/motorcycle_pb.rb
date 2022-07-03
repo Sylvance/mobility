@@ -20,11 +20,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.MotorcyclesList" do
       repeated :motorcycles, :message, 1, "mobility.services.Motorcycle"
     end
-    add_message "mobility.services.Success" do
+    add_message "mobility.services.MotorcycleSuccessResponse" do
       optional :content, :string, 1
       optional :type, :string, 2
     end
-    add_message "mobility.services.Error" do
+    add_message "mobility.services.MotorcycleErrorResponse" do
       repeated :content, :string, 1
       optional :type, :string, 2
     end
@@ -34,7 +34,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.ListMotorcyclesResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.MotorcycleErrorResponse"
         optional :motorcycles_list, :message, 3, "mobility.services.MotorcyclesList"
       end
     end
@@ -44,7 +44,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.GetMotorcycleResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.MotorcycleErrorResponse"
         optional :motorcycle, :message, 3, "mobility.services.Motorcycle"
       end
     end
@@ -54,7 +54,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.CreateMotorcycleResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.MotorcycleErrorResponse"
         optional :motorcycle, :message, 3, "mobility.services.Motorcycle"
       end
     end
@@ -64,7 +64,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.UpdateMotorcycleResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.MotorcycleErrorResponse"
         optional :motorcycle, :message, 3, "mobility.services.Motorcycle"
       end
     end
@@ -74,8 +74,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.DeleteMotorcycleResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.MotorcycleErrorResponse"
+        optional :success, :message, 3, "mobility.services.MotorcycleSuccessResponse"
       end
     end
     add_message "mobility.services.ReceiveBatteryForMotorcycleRequest" do
@@ -84,7 +84,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.ReceiveBatteryForMotorcycleResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.MotorcycleErrorResponse"
         optional :current_battery_id, :string, 3
       end
     end
@@ -95,8 +95,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.ReturnBatteryForMotorcycleResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.MotorcycleErrorResponse"
+        optional :success, :message, 3, "mobility.services.MotorcycleSuccessResponse"
       end
     end
     add_message "mobility.services.AssignFlightForMotorcycleRequest" do
@@ -105,8 +105,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.AssignFlightForMotorcycleResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.MotorcycleErrorResponse"
+        optional :success, :message, 3, "mobility.services.MotorcycleSuccessResponse"
       end
     end
     add_message "mobility.services.RetrieveCurrentFlightForMotorcycleRequest" do
@@ -115,7 +115,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.RetrieveCurrentFlightForMotorcycleResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.MotorcycleErrorResponse"
         optional :current_flight_id, :string, 3
       end
     end
@@ -125,7 +125,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.RetrieveCurrentLocationForMotorcycleResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.MotorcycleErrorResponse"
         optional :current_location_id, :string, 3
       end
     end
@@ -136,7 +136,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.RetrieveDistanceMovedInFlightForMotorcycleResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.MotorcycleErrorResponse"
         optional :current_distance_id, :string, 3
       end
     end
@@ -147,8 +147,8 @@ module Mobility
   module Services
     Motorcycle = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Motorcycle").msgclass
     MotorcyclesList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.MotorcyclesList").msgclass
-    Success = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Success").msgclass
-    Error = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Error").msgclass
+    MotorcycleSuccessResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.MotorcycleSuccessResponse").msgclass
+    MotorcycleErrorResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.MotorcycleErrorResponse").msgclass
     ListMotorcyclesRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListMotorcyclesRequest").msgclass
     ListMotorcyclesResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListMotorcyclesResponse").msgclass
     GetMotorcycleRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.GetMotorcycleRequest").msgclass

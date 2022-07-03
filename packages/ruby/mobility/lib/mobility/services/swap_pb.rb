@@ -17,11 +17,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.SwapsList" do
       repeated :swaps, :message, 1, "mobility.services.Swap"
     end
-    add_message "mobility.services.Success" do
+    add_message "mobility.services.SwapSuccessResponse" do
       optional :content, :string, 1
       optional :type, :string, 2
     end
-    add_message "mobility.services.Error" do
+    add_message "mobility.services.SwapErrorResponse" do
       repeated :content, :string, 1
       optional :type, :string, 2
     end
@@ -31,7 +31,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.ListSwapsResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.SwapErrorResponse"
         optional :swaps_list, :message, 3, "mobility.services.SwapsList"
       end
     end
@@ -41,7 +41,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.GetSwapResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.SwapErrorResponse"
         optional :swap, :message, 3, "mobility.services.Swap"
       end
     end
@@ -51,7 +51,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.CreateSwapResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.SwapErrorResponse"
         optional :swap, :message, 3, "mobility.services.Swap"
       end
     end
@@ -61,7 +61,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.UpdateSwapResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.SwapErrorResponse"
         optional :swap, :message, 3, "mobility.services.Swap"
       end
     end
@@ -71,8 +71,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.DeleteSwapResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.SwapErrorResponse"
+        optional :success, :message, 3, "mobility.services.SwapSuccessResponse"
       end
     end
     add_message "mobility.services.SearchSwapByOperatorIDRequest" do
@@ -81,7 +81,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.SearchSwapByOperatorIDResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.SwapErrorResponse"
         optional :swaps_list, :message, 3, "mobility.services.SwapsList"
       end
     end
@@ -91,7 +91,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.SearchSwapByBatteryIDResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.SwapErrorResponse"
         optional :swaps_list, :message, 3, "mobility.services.SwapsList"
       end
     end
@@ -101,7 +101,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.SearchSwapByFlightIDResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.SwapErrorResponse"
         optional :swaps_list, :message, 3, "mobility.services.SwapsList"
       end
     end
@@ -112,8 +112,8 @@ module Mobility
   module Services
     Swap = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Swap").msgclass
     SwapsList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.SwapsList").msgclass
-    Success = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Success").msgclass
-    Error = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Error").msgclass
+    SwapSuccessResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.SwapSuccessResponse").msgclass
+    SwapErrorResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.SwapErrorResponse").msgclass
     ListSwapsRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListSwapsRequest").msgclass
     ListSwapsResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListSwapsResponse").msgclass
     GetSwapRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.GetSwapRequest").msgclass

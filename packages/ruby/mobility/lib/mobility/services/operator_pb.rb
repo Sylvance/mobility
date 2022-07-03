@@ -18,11 +18,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.OperatorsList" do
       repeated :operators, :message, 1, "mobility.services.Operator"
     end
-    add_message "mobility.services.Success" do
+    add_message "mobility.services.OperatorSuccessResponse" do
       optional :content, :string, 1
       optional :type, :string, 2
     end
-    add_message "mobility.services.Error" do
+    add_message "mobility.services.OperatorErrorResponse" do
       repeated :content, :string, 1
       optional :type, :string, 2
     end
@@ -32,7 +32,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.ListOperatorsResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.OperatorErrorResponse"
         optional :operators_list, :message, 3, "mobility.services.OperatorsList"
       end
     end
@@ -42,7 +42,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.GetOperatorResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.OperatorErrorResponse"
         optional :operator, :message, 3, "mobility.services.Operator"
       end
     end
@@ -52,7 +52,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.CreateOperatorResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.OperatorErrorResponse"
         optional :operator, :message, 3, "mobility.services.Operator"
       end
     end
@@ -62,7 +62,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.UpdateOperatorResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.OperatorErrorResponse"
         optional :operator, :message, 3, "mobility.services.Operator"
       end
     end
@@ -72,8 +72,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.DeleteOperatorResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.OperatorErrorResponse"
+        optional :success, :message, 3, "mobility.services.OperatorSuccessResponse"
       end
     end
     add_message "mobility.services.SignInToStationRequest" do
@@ -83,8 +83,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.SignInToStationResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.OperatorErrorResponse"
+        optional :success, :message, 3, "mobility.services.OperatorSuccessResponse"
       end
     end
     add_message "mobility.services.InitiateFlightRequest" do
@@ -94,8 +94,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.InitiateFlightResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.OperatorErrorResponse"
+        optional :success, :message, 3, "mobility.services.OperatorSuccessResponse"
       end
     end
     add_message "mobility.services.TerminateFlightRequest" do
@@ -106,8 +106,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.TerminateFlightResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.OperatorErrorResponse"
+        optional :success, :message, 3, "mobility.services.OperatorSuccessResponse"
       end
     end
     add_message "mobility.services.InitiateSwapRequest" do
@@ -120,8 +120,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.InitiateSwapResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.OperatorErrorResponse"
+        optional :success, :message, 3, "mobility.services.OperatorSuccessResponse"
       end
     end
     add_message "mobility.services.InitiatePaymentForFlightRequest" do
@@ -131,8 +131,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.InitiatePaymentForFlightResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.OperatorErrorResponse"
+        optional :success, :message, 3, "mobility.services.OperatorSuccessResponse"
       end
     end
   end
@@ -142,8 +142,8 @@ module Mobility
   module Services
     Operator = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Operator").msgclass
     OperatorsList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.OperatorsList").msgclass
-    Success = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Success").msgclass
-    Error = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Error").msgclass
+    OperatorSuccessResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.OperatorSuccessResponse").msgclass
+    OperatorErrorResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.OperatorErrorResponse").msgclass
     ListOperatorsRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListOperatorsRequest").msgclass
     ListOperatorsResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListOperatorsResponse").msgclass
     GetOperatorRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.GetOperatorRequest").msgclass

@@ -39,12 +39,12 @@ message OperatorsList {
     repeated Operator operators = 1;
 }
 
-message Success {
+message OperatorSuccessResponse {
     string content = 1;
     string type = 2;
 }
 
-message Error {
+message OperatorErrorResponse {
     repeated string content = 1;
     string type = 2;
 }
@@ -56,7 +56,7 @@ message ListOperatorsRequest {
 message ListOperatorsResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        OperatorErrorResponse error = 2;
         OperatorsList operators_list = 3;
     }
 }
@@ -68,7 +68,7 @@ message GetOperatorRequest {
 message GetOperatorResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        OperatorErrorResponse error = 2;
         Operator operator = 3;
     }
 }
@@ -80,7 +80,7 @@ message CreateOperatorRequest {
 message CreateOperatorResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        OperatorErrorResponse error = 2;
         Operator operator = 3;
     }
 }
@@ -92,7 +92,7 @@ message UpdateOperatorRequest {
 message UpdateOperatorResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        OperatorErrorResponse error = 2;
         Operator operator = 3;
     }
 }
@@ -104,8 +104,8 @@ message DeleteOperatorRequest {
 message DeleteOperatorResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
-        Success success = 3;
+        OperatorErrorResponse error = 2;
+        OperatorSuccessResponse success = 3;
     }
 }
 
@@ -117,8 +117,8 @@ message SignInToStationRequest {
 message SignInToStationResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
-        Success success = 3;
+        OperatorErrorResponse error = 2;
+        OperatorSuccessResponse success = 3;
     }
 }
 
@@ -130,8 +130,8 @@ message InitiateFlightRequest {
 message InitiateFlightResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
-        Success success = 3;
+        OperatorErrorResponse error = 2;
+        OperatorSuccessResponse success = 3;
     }
 }
 
@@ -144,8 +144,8 @@ message TerminateFlightRequest {
 message TerminateFlightResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
-        Success success = 3;
+        OperatorErrorResponse error = 2;
+        OperatorSuccessResponse success = 3;
     }
 }
 
@@ -160,8 +160,8 @@ message InitiateSwapRequest {
 message InitiateSwapResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
-        Success success = 3;
+        OperatorErrorResponse error = 2;
+        OperatorSuccessResponse success = 3;
     }
 }
 
@@ -173,7 +173,7 @@ message InitiatePaymentForFlightRequest {
 message InitiatePaymentForFlightResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
-        Success success = 3;
+        OperatorErrorResponse error = 2;
+        OperatorSuccessResponse success = 3;
     }
 }

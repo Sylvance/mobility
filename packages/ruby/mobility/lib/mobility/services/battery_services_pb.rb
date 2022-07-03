@@ -2,7 +2,7 @@
 # Source: battery.proto for package 'mobility.services'
 
 require 'grpc'
-require_relative './battery_pb'
+require_relative 'battery_pb'
 
 module Mobility
   module Services

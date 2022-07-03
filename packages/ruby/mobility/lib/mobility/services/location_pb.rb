@@ -18,11 +18,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.LocationsList" do
       repeated :locations, :message, 1, "mobility.services.Location"
     end
-    add_message "mobility.services.Success" do
+    add_message "mobility.services.LocationSuccessResponse" do
       optional :content, :string, 1
       optional :type, :string, 2
     end
-    add_message "mobility.services.Error" do
+    add_message "mobility.services.LocationErrorResponse" do
       repeated :content, :string, 1
       optional :type, :string, 2
     end
@@ -32,7 +32,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.ListLocationsResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.LocationErrorResponse"
         optional :locations_list, :message, 3, "mobility.services.LocationsList"
       end
     end
@@ -42,7 +42,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.GetLocationResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.LocationErrorResponse"
         optional :location, :message, 3, "mobility.services.Location"
       end
     end
@@ -52,7 +52,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.CreateLocationResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.LocationErrorResponse"
         optional :location, :message, 3, "mobility.services.Location"
       end
     end
@@ -62,7 +62,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.UpdateLocationResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.LocationErrorResponse"
         optional :location, :message, 3, "mobility.services.Location"
       end
     end
@@ -72,8 +72,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.DeleteLocationResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.LocationErrorResponse"
+        optional :success, :message, 3, "mobility.services.LocationSuccessResponse"
       end
     end
     add_message "mobility.services.StartLocationDataStreamForFlightIDRequest" do
@@ -82,8 +82,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.StartLocationDataStreamForFlightIDResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.LocationErrorResponse"
+        optional :success, :message, 3, "mobility.services.LocationSuccessResponse"
       end
     end
     add_message "mobility.services.StopLocationDataStreamForFlightIDRequest" do
@@ -92,8 +92,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.StopLocationDataStreamForFlightIDResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.LocationErrorResponse"
+        optional :success, :message, 3, "mobility.services.LocationSuccessResponse"
       end
     end
     add_message "mobility.services.AggregateLocationDataStreamForFlightIDRequest" do
@@ -102,8 +102,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.AggregateLocationDataStreamForFlightIDResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.LocationErrorResponse"
+        optional :success, :message, 3, "mobility.services.LocationSuccessResponse"
       end
     end
   end
@@ -113,8 +113,8 @@ module Mobility
   module Services
     Location = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Location").msgclass
     LocationsList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.LocationsList").msgclass
-    Success = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Success").msgclass
-    Error = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Error").msgclass
+    LocationSuccessResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.LocationSuccessResponse").msgclass
+    LocationErrorResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.LocationErrorResponse").msgclass
     ListLocationsRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListLocationsRequest").msgclass
     ListLocationsResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListLocationsResponse").msgclass
     GetLocationRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.GetLocationRequest").msgclass

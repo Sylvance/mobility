@@ -43,12 +43,12 @@ message MotorcyclesList {
     repeated Motorcycle motorcycles = 1;
 }
 
-message Success {
+message MotorcycleSuccessResponse {
     string content = 1;
     string type = 2;
 }
 
-message Error {
+message MotorcycleErrorResponse {
     repeated string content = 1;
     string type = 2;
 }
@@ -60,7 +60,7 @@ message ListMotorcyclesRequest {
 message ListMotorcyclesResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        MotorcycleErrorResponse error = 2;
         MotorcyclesList motorcycles_list = 3;
     }
 }
@@ -72,7 +72,7 @@ message GetMotorcycleRequest {
 message GetMotorcycleResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        MotorcycleErrorResponse error = 2;
         Motorcycle motorcycle = 3;
     }
 }
@@ -84,7 +84,7 @@ message CreateMotorcycleRequest {
 message CreateMotorcycleResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        MotorcycleErrorResponse error = 2;
         Motorcycle motorcycle = 3;
     }
 }
@@ -96,7 +96,7 @@ message UpdateMotorcycleRequest {
 message UpdateMotorcycleResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        MotorcycleErrorResponse error = 2;
         Motorcycle motorcycle = 3;
     }
 }
@@ -108,8 +108,8 @@ message DeleteMotorcycleRequest {
 message DeleteMotorcycleResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
-        Success success = 3;
+        MotorcycleErrorResponse error = 2;
+        MotorcycleSuccessResponse success = 3;
     }
 }
 
@@ -120,7 +120,7 @@ message ReceiveBatteryForMotorcycleRequest {
 message ReceiveBatteryForMotorcycleResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        MotorcycleErrorResponse error = 2;
         string current_battery_id = 3;
     }
 }
@@ -133,8 +133,8 @@ message ReturnBatteryForMotorcycleRequest {
 message ReturnBatteryForMotorcycleResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
-        Success success = 3;
+        MotorcycleErrorResponse error = 2;
+        MotorcycleSuccessResponse success = 3;
     }
 }
 
@@ -145,8 +145,8 @@ message AssignFlightForMotorcycleRequest {
 message AssignFlightForMotorcycleResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
-        Success success = 3;
+        MotorcycleErrorResponse error = 2;
+        MotorcycleSuccessResponse success = 3;
     }
 }
 
@@ -157,7 +157,7 @@ message RetrieveCurrentFlightForMotorcycleRequest {
 message RetrieveCurrentFlightForMotorcycleResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        MotorcycleErrorResponse error = 2;
         string current_flight_id = 3;
     }
 }
@@ -169,7 +169,7 @@ message RetrieveCurrentLocationForMotorcycleRequest {
 message RetrieveCurrentLocationForMotorcycleResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        MotorcycleErrorResponse error = 2;
         string current_location_id = 3;
     }
 }
@@ -182,7 +182,7 @@ message RetrieveDistanceMovedInFlightForMotorcycleRequest {
 message RetrieveDistanceMovedInFlightForMotorcycleResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        MotorcycleErrorResponse error = 2;
         string current_distance_id = 3;
     }
 }

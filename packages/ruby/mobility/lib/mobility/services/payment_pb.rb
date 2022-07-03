@@ -20,11 +20,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.PaymentsList" do
       repeated :payments, :message, 1, "mobility.services.Payment"
     end
-    add_message "mobility.services.Success" do
+    add_message "mobility.services.PaymentSuccessResponse" do
       optional :content, :string, 1
       optional :type, :string, 2
     end
-    add_message "mobility.services.Error" do
+    add_message "mobility.services.PaymentErrorResponse" do
       repeated :content, :string, 1
       optional :type, :string, 2
     end
@@ -34,7 +34,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.ListPaymentsResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.PaymentErrorResponse"
         optional :payments_list, :message, 3, "mobility.services.PaymentsList"
       end
     end
@@ -44,7 +44,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.GetPaymentResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.PaymentErrorResponse"
         optional :payment, :message, 3, "mobility.services.Payment"
       end
     end
@@ -54,7 +54,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.CreatePaymentResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.PaymentErrorResponse"
         optional :payment, :message, 3, "mobility.services.Payment"
       end
     end
@@ -64,7 +64,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.UpdatePaymentResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.PaymentErrorResponse"
         optional :payment, :message, 3, "mobility.services.Payment"
       end
     end
@@ -74,8 +74,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.DeletePaymentResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.PaymentErrorResponse"
+        optional :success, :message, 3, "mobility.services.PaymentSuccessResponse"
       end
     end
     add_message "mobility.services.CollectPaymentForFlightIDRequest" do
@@ -84,7 +84,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.CollectPaymentForFlightIDResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.PaymentErrorResponse"
         optional :payment, :message, 3, "mobility.services.Payment"
       end
     end
@@ -101,8 +101,8 @@ module Mobility
   module Services
     Payment = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Payment").msgclass
     PaymentsList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.PaymentsList").msgclass
-    Success = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Success").msgclass
-    Error = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Error").msgclass
+    PaymentSuccessResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.PaymentSuccessResponse").msgclass
+    PaymentErrorResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.PaymentErrorResponse").msgclass
     ListPaymentsRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListPaymentsRequest").msgclass
     ListPaymentsResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListPaymentsResponse").msgclass
     GetPaymentRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.GetPaymentRequest").msgclass

@@ -2,7 +2,7 @@
 # Source: operator.proto for package 'mobility.services'
 
 require 'grpc'
-require_relative './operator_pb'
+require_relative 'operator_pb'
 
 module Mobility
   module Services

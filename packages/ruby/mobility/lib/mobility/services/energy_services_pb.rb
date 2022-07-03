@@ -2,7 +2,7 @@
 # Source: energy.proto for package 'mobility.services'
 
 require 'grpc'
-require_relative './energy_pb'
+require_relative 'energy_pb'
 
 module Mobility
   module Services

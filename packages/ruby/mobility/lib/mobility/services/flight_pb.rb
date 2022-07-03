@@ -29,11 +29,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.FlightsList" do
       repeated :flights, :message, 1, "mobility.services.Flight"
     end
-    add_message "mobility.services.Success" do
+    add_message "mobility.services.FlightSuccessResponse" do
       optional :content, :string, 1
       optional :type, :string, 2
     end
-    add_message "mobility.services.Error" do
+    add_message "mobility.services.FlightErrorResponse" do
       repeated :content, :string, 1
       optional :type, :string, 2
     end
@@ -43,7 +43,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.ListFlightsResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.FlightErrorResponse"
         optional :flights_list, :message, 3, "mobility.services.FlightsList"
       end
     end
@@ -53,7 +53,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.GetFlightResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.FlightErrorResponse"
         optional :flight, :message, 3, "mobility.services.Flight"
       end
     end
@@ -63,7 +63,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.CreateFlightResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.FlightErrorResponse"
         optional :flight, :message, 3, "mobility.services.Flight"
       end
     end
@@ -73,7 +73,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.UpdateFlightResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.FlightErrorResponse"
         optional :flight, :message, 3, "mobility.services.Flight"
       end
     end
@@ -83,8 +83,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.DeleteFlightResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.FlightErrorResponse"
+        optional :success, :message, 3, "mobility.services.FlightSuccessResponse"
       end
     end
     add_message "mobility.services.FinishFlightRequest" do
@@ -93,8 +93,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.FinishFlightResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.FlightErrorResponse"
+        optional :success, :message, 3, "mobility.services.FlightSuccessResponse"
       end
     end
     add_message "mobility.services.RetrieveCurrentFlightLocationRequest" do
@@ -103,7 +103,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.RetrieveCurrentFlightLocationResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.FlightErrorResponse"
         optional :current_location_id, :string, 3
       end
     end
@@ -113,7 +113,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.RetrieveCurrentFlightEnergyUsageResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.FlightErrorResponse"
         optional :current_energy_id, :string, 3
       end
     end
@@ -123,7 +123,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.RetrieveCurrentFlightDistanceCoveredResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.FlightErrorResponse"
         optional :current_distance_id, :string, 3
       end
     end
@@ -133,7 +133,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.RetrieveCurrentFlightCashAmountResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.FlightErrorResponse"
         optional :current_flight_amount_id, :string, 3
       end
     end
@@ -143,7 +143,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.RetrieveFinalFlightLocationResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.FlightErrorResponse"
         optional :final_location_id, :string, 3
       end
     end
@@ -153,7 +153,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.RetrieveFinalFlightEnergyUsageResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.FlightErrorResponse"
         optional :final_energy_id, :string, 3
       end
     end
@@ -163,7 +163,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.RetrieveFinalFlightDistanceCoveredResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.FlightErrorResponse"
         optional :final_distance_id, :string, 3
       end
     end
@@ -173,7 +173,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.RetrieveFinalFlightCashAmountResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.FlightErrorResponse"
         optional :final_flight_amount_id, :string, 3
       end
     end
@@ -183,7 +183,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.RetrieveNearestStationToFlightResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.FlightErrorResponse"
         optional :station_id, :string, 3
       end
     end
@@ -194,8 +194,8 @@ module Mobility
   module Services
     Flight = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Flight").msgclass
     FlightsList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.FlightsList").msgclass
-    Success = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Success").msgclass
-    Error = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Error").msgclass
+    FlightSuccessResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.FlightSuccessResponse").msgclass
+    FlightErrorResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.FlightErrorResponse").msgclass
     ListFlightsRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListFlightsRequest").msgclass
     ListFlightsResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListFlightsResponse").msgclass
     GetFlightRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.GetFlightRequest").msgclass

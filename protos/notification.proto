@@ -46,12 +46,12 @@ message NotificationsList {
     repeated Notification notifications = 1;
 }
 
-message Success {
+message NotificationSuccessResponse {
     string content = 1;
     string type = 2;
 }
 
-message Error {
+message NotificationErrorResponse {
     repeated string content = 1;
     string type = 2;
 }
@@ -63,7 +63,7 @@ message ListNotificationsRequest {
 message ListNotificationsResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        NotificationErrorResponse error = 2;
         NotificationsList notifications_list = 3;
     }
 }
@@ -75,7 +75,7 @@ message GetNotificationRequest {
 message GetNotificationResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        NotificationErrorResponse error = 2;
         Notification notification = 3;
     }
 }
@@ -87,7 +87,7 @@ message CreateNotificationRequest {
 message CreateNotificationResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        NotificationErrorResponse error = 2;
         Notification notification = 3;
     }
 }
@@ -99,7 +99,7 @@ message UpdateNotificationRequest {
 message UpdateNotificationResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        NotificationErrorResponse error = 2;
         Notification notification = 3;
     }
 }
@@ -111,7 +111,7 @@ message DeleteNotificationRequest {
 message DeleteNotificationResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
-        Success success = 3;
+        NotificationErrorResponse error = 2;
+        NotificationSuccessResponse success = 3;
     }
 }

@@ -32,11 +32,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.NotificationsList" do
       repeated :notifications, :message, 1, "mobility.services.Notification"
     end
-    add_message "mobility.services.Success" do
+    add_message "mobility.services.NotificationSuccessResponse" do
       optional :content, :string, 1
       optional :type, :string, 2
     end
-    add_message "mobility.services.Error" do
+    add_message "mobility.services.NotificationErrorResponse" do
       repeated :content, :string, 1
       optional :type, :string, 2
     end
@@ -46,7 +46,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.ListNotificationsResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.NotificationErrorResponse"
         optional :notifications_list, :message, 3, "mobility.services.NotificationsList"
       end
     end
@@ -56,7 +56,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.GetNotificationResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.NotificationErrorResponse"
         optional :notification, :message, 3, "mobility.services.Notification"
       end
     end
@@ -66,7 +66,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.CreateNotificationResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.NotificationErrorResponse"
         optional :notification, :message, 3, "mobility.services.Notification"
       end
     end
@@ -76,7 +76,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.UpdateNotificationResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.NotificationErrorResponse"
         optional :notification, :message, 3, "mobility.services.Notification"
       end
     end
@@ -86,8 +86,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.DeleteNotificationResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.NotificationErrorResponse"
+        optional :success, :message, 3, "mobility.services.NotificationSuccessResponse"
       end
     end
   end
@@ -100,8 +100,8 @@ module Mobility
     OperatorNotification = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.OperatorNotification").msgclass
     DriverNotification = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.DriverNotification").msgclass
     NotificationsList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.NotificationsList").msgclass
-    Success = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Success").msgclass
-    Error = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Error").msgclass
+    NotificationSuccessResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.NotificationSuccessResponse").msgclass
+    NotificationErrorResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.NotificationErrorResponse").msgclass
     ListNotificationsRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListNotificationsRequest").msgclass
     ListNotificationsResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListNotificationsResponse").msgclass
     GetNotificationRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.GetNotificationRequest").msgclass

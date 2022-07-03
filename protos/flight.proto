@@ -60,12 +60,12 @@ message FlightsList {
     repeated Flight flights = 1;
 }
 
-message Success {
+message FlightSuccessResponse {
     string content = 1;
     string type = 2;
 }
 
-message Error {
+message FlightErrorResponse {
     repeated string content = 1;
     string type = 2;
 }
@@ -77,7 +77,7 @@ message ListFlightsRequest {
 message ListFlightsResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        FlightErrorResponse error = 2;
         FlightsList flights_list = 3;
     }
 }
@@ -89,7 +89,7 @@ message GetFlightRequest {
 message GetFlightResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        FlightErrorResponse error = 2;
         Flight flight = 3;
     }
 }
@@ -101,7 +101,7 @@ message CreateFlightRequest {
 message CreateFlightResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        FlightErrorResponse error = 2;
         Flight flight = 3;
     }
 }
@@ -113,7 +113,7 @@ message UpdateFlightRequest {
 message UpdateFlightResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        FlightErrorResponse error = 2;
         Flight flight = 3;
     }
 }
@@ -125,8 +125,8 @@ message DeleteFlightRequest {
 message DeleteFlightResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
-        Success success = 3;
+        FlightErrorResponse error = 2;
+        FlightSuccessResponse success = 3;
     }
 }
 
@@ -137,8 +137,8 @@ message FinishFlightRequest {
 message FinishFlightResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
-        Success success = 3;
+        FlightErrorResponse error = 2;
+        FlightSuccessResponse success = 3;
     }
 }
 
@@ -149,7 +149,7 @@ message RetrieveCurrentFlightLocationRequest {
 message RetrieveCurrentFlightLocationResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        FlightErrorResponse error = 2;
         string current_location_id = 3;
     }
 }
@@ -161,7 +161,7 @@ message RetrieveCurrentFlightEnergyUsageRequest {
 message RetrieveCurrentFlightEnergyUsageResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        FlightErrorResponse error = 2;
         string current_energy_id = 3;
     }
 }
@@ -173,7 +173,7 @@ message RetrieveCurrentFlightDistanceCoveredRequest {
 message RetrieveCurrentFlightDistanceCoveredResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        FlightErrorResponse error = 2;
         string current_distance_id = 3;
     }
 }
@@ -185,7 +185,7 @@ message RetrieveCurrentFlightCashAmountRequest {
 message RetrieveCurrentFlightCashAmountResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        FlightErrorResponse error = 2;
         string current_flight_amount_id = 3;
     }
 }
@@ -197,7 +197,7 @@ message RetrieveFinalFlightLocationRequest {
 message RetrieveFinalFlightLocationResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        FlightErrorResponse error = 2;
         string final_location_id = 3;
     }
 }
@@ -209,7 +209,7 @@ message RetrieveFinalFlightEnergyUsageRequest {
 message RetrieveFinalFlightEnergyUsageResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        FlightErrorResponse error = 2;
         string final_energy_id = 3;
     }
 }
@@ -221,7 +221,7 @@ message RetrieveFinalFlightDistanceCoveredRequest {
 message RetrieveFinalFlightDistanceCoveredResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        FlightErrorResponse error = 2;
         string final_distance_id = 3;
     }
 }
@@ -233,7 +233,7 @@ message RetrieveFinalFlightCashAmountRequest {
 message RetrieveFinalFlightCashAmountResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        FlightErrorResponse error = 2;
         string final_flight_amount_id = 3;
     }
 }
@@ -245,7 +245,7 @@ message RetrieveNearestStationToFlightRequest {
 message RetrieveNearestStationToFlightResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        FlightErrorResponse error = 2;
         string station_id = 3;
     }
 }

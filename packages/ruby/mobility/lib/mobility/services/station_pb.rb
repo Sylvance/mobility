@@ -18,11 +18,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.StationsList" do
       repeated :stations, :message, 1, "mobility.services.Station"
     end
-    add_message "mobility.services.Success" do
+    add_message "mobility.services.StationSuccessResponse" do
       optional :content, :string, 1
       optional :type, :string, 2
     end
-    add_message "mobility.services.Error" do
+    add_message "mobility.services.StationErrorResponse" do
       repeated :content, :string, 1
       optional :type, :string, 2
     end
@@ -32,7 +32,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.ListStationsResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.StationErrorResponse"
         optional :stations_list, :message, 3, "mobility.services.StationsList"
       end
     end
@@ -42,7 +42,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.GetStationResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.StationErrorResponse"
         optional :station, :message, 3, "mobility.services.Station"
       end
     end
@@ -52,7 +52,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.CreateStationResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.StationErrorResponse"
         optional :station, :message, 3, "mobility.services.Station"
       end
     end
@@ -62,7 +62,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.UpdateStationResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
+        optional :error, :message, 2, "mobility.services.StationErrorResponse"
         optional :station, :message, 3, "mobility.services.Station"
       end
     end
@@ -72,8 +72,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "mobility.services.DeleteStationResponse" do
       optional :successful, :bool, 1
       oneof :result do
-        optional :error, :message, 2, "mobility.services.Error"
-        optional :success, :message, 3, "mobility.services.Success"
+        optional :error, :message, 2, "mobility.services.StationErrorResponse"
+        optional :success, :message, 3, "mobility.services.StationSuccessResponse"
       end
     end
     add_message "mobility.services.GetBatterySupplyForStationRequest" do
@@ -102,8 +102,8 @@ module Mobility
   module Services
     Station = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Station").msgclass
     StationsList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.StationsList").msgclass
-    Success = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Success").msgclass
-    Error = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.Error").msgclass
+    StationSuccessResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.StationSuccessResponse").msgclass
+    StationErrorResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.StationErrorResponse").msgclass
     ListStationsRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListStationsRequest").msgclass
     ListStationsResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.ListStationsResponse").msgclass
     GetStationRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("mobility.services.GetStationRequest").msgclass

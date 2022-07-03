@@ -2,7 +2,7 @@
 # Source: flight.proto for package 'mobility.services'
 
 require 'grpc'
-require_relative './flight_pb'
+require_relative 'flight_pb'
 
 module Mobility
   module Services

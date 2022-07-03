@@ -30,12 +30,12 @@ message PredictionsList {
     repeated Prediction predictions = 1;
 }
 
-message Success {
+message PredictionSuccessResponse {
     string content = 1;
     string type = 2;
 }
 
-message Error {
+message PredictionErrorResponse {
     repeated string content = 1;
     string type = 2;
 }
@@ -47,7 +47,7 @@ message ListPredictionsRequest {
 message ListPredictionsResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        PredictionErrorResponse error = 2;
         PredictionsList predictions_list = 3;
     }
 }
@@ -59,7 +59,7 @@ message GetPredictionRequest {
 message GetPredictionResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        PredictionErrorResponse error = 2;
         Prediction prediction = 3;
     }
 }
@@ -71,7 +71,7 @@ message CreatePredictionRequest {
 message CreatePredictionResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        PredictionErrorResponse error = 2;
         Prediction prediction = 3;
     }
 }
@@ -83,7 +83,7 @@ message UpdatePredictionRequest {
 message UpdatePredictionResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        PredictionErrorResponse error = 2;
         Prediction prediction = 3;
     }
 }
@@ -95,8 +95,8 @@ message DeletePredictionRequest {
 message DeletePredictionResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
-        Success success = 3;
+        PredictionErrorResponse error = 2;
+        PredictionSuccessResponse success = 3;
     }
 }
 
@@ -107,7 +107,7 @@ message GenerateBatteryNumberPredictionForStationRequest {
 message GenerateBatteryNumberPredictionForStationResponse {
     bool successful = 1;
     oneof result {
-        Error error = 2;
+        PredictionErrorResponse error = 2;
         Prediction prediction = 3;
     }
 }
