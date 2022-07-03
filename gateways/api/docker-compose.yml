@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        runner: "web"
+    command: bundle exec rackup --host 0.0.0.0 -p 4000
+    ports:
+      - '4000:4000'
+    volumes:
+      - .:/api-gateway
