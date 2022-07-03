@@ -1,2 +1,21 @@
-class Flight < ActiveRecord::Base
+class Flight
+    attr_accessor :flight_id,
+                  :battery_id,
+                  :initiating_station_id,
+                  :finishing_station_id,
+                  :initiating_operator_id,
+                  :finishing_operator_id,
+                  :motorcycle_id,
+                  :driver_id,
+                  :started_at,
+                  :ended_at,
+                  :status,
+                  :current_location_id,
+                  :current_energy_id,
+                  :current_distance_id,
+                  :current_flight_amount_id,
+                  :final_location_id,
+                  :final_energy_id,
+                  :final_distance_id,
+                  :final_flight_amount_id
 end
