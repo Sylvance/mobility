@@ -13,6 +13,20 @@ implemented using Ruby and could be extended to Python, JS and Go.
 
 ## Installation
 
+Run these in order, this repo's root folder;
+
+```sh
+make services
+make gateways
+make frontend
+```
+
+Open http://localhost:4790/ for Admin user interface.
+Open http://localhost:4791/ for Driver user interface.
+Open http://localhost:4792/ for Operator user interface.
+
+Go ahead and explore.
+
 ## System Architecture
 
 We have 4 user interfaces;
