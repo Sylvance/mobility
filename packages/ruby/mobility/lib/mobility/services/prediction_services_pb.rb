@@ -2,7 +2,7 @@
 # Source: prediction.proto for package 'mobility.services'
 
 require 'grpc'
-require 'prediction_pb'
+require_relative './prediction_pb'
 
 module Mobility
   module Services

@@ -2,7 +2,7 @@
 # Source: station.proto for package 'mobility.services'
 
 require 'grpc'
-require 'station_pb'
+require_relative './station_pb'
 
 module Mobility
   module Services

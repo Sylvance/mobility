@@ -2,7 +2,7 @@
 # Source: driver.proto for package 'mobility.protos.driver'
 
 require 'grpc'
-require 'driver_pb'
+require_relative './driver_pb'
 
 module Mobility
   module Protos

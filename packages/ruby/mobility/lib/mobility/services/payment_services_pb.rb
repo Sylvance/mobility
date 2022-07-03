@@ -2,7 +2,7 @@
 # Source: payment.proto for package 'mobility.services'
 
 require 'grpc'
-require 'payment_pb'
+require_relative './payment_pb'
 
 module Mobility
   module Services

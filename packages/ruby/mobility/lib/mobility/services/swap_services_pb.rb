@@ -2,7 +2,7 @@
 # Source: swap.proto for package 'mobility.services'
 
 require 'grpc'
-require 'swap_pb'
+require_relative './swap_pb'
 
 module Mobility
   module Services
