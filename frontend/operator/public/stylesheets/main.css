@@ -113,3 +113,17 @@
     line-height: 24px;
   }
 }
+
+.navbar {
+  width: 100%;
+
+  display: flex;
+  gap: 16px;
+}
+
+.marginLeft { margin-left: auto; }
+
+.navbar-li {
+  margin-top: 10px;
+}
+
