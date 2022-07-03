@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        runner: "web"
+    command: bundle exec rackup --host 0.0.0.0 -p 3001
+    ports:
+      - '3001:3001'
+    volumes:
+      - .:/frontend-driver
