@@ -1,2 +1,3 @@
-class FlightHistory < ActiveRecord::Base
+class FlightHistory
+    attr_accessor :flight_id
 end

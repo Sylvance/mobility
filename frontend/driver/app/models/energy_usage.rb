@@ -1,2 +1,3 @@
-class EnergyUsage < ActiveRecord::Base
+class EnergyUsage
+    attr_accessor :driver_id
 end

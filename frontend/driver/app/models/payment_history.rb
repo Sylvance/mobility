@@ -1,2 +1,3 @@
-class PaymentHistory < ActiveRecord::Base
+class PaymentHistory
+    attr_accessor :driver_id
 end

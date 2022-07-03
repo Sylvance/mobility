@@ -1,2 +1,3 @@
-class Flight < ActiveRecord::Base
+class Flight
+    attr_accessor :driver_id
 end
