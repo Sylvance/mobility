@@ -6,6 +6,6 @@ WORKDIR /frontend-driver
 
 RUN bundle install
 
-EXPOSE 3001
+EXPOSE 4791
 
 CMD ["/bin/bash"]

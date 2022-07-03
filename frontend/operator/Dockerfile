@@ -6,6 +6,6 @@ WORKDIR /frontend-operator
 
 RUN bundle install
 
-EXPOSE 3002
+EXPOSE 4792
 
 CMD ["/bin/bash"]

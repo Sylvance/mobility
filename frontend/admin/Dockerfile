@@ -6,6 +6,6 @@ WORKDIR /frontend-admin
 
 RUN bundle install
 
-EXPOSE 3000
+EXPOSE 4790
 
 CMD ["/bin/bash"]

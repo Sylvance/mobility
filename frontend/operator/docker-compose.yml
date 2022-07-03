@@ -6,8 +6,8 @@ services:
       dockerfile: Dockerfile
       args:
         runner: "web"
-    command: bundle exec rackup --host 0.0.0.0 -p 3002
+    command: bundle exec rackup --host 0.0.0.0 -p 4792
     ports:
-      - '3002:3002'
+      - '4792:4792'
     volumes:
       - .:/frontend-operator
