@@ -16,9 +16,9 @@ implemented using Ruby and could be extended to Python, JS and Go.
 Run these in order, this repo's root folder;
 
 ```sh
-make services
-make gateways
-make frontend
+make all_services
+make all_gateways
+make all_frontends
 ```
 
 Open http://localhost:4790/ for Admin user interface.
