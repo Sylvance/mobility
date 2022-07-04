@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Sylvance/mobility.git
-  revision: cee87d6cb98eda7d4442f662a070bc7bfe07443a
+  revision: 3aa35b43a4e75979c69c131de41149a420573f27
   branch: main
   glob: packages/ruby/mobility/mobility.gemspec
   specs:
