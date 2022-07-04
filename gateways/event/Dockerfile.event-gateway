@@ -1,0 +1,11 @@
+FROM ruby:3.1.2
+
+ADD . /event-gateway
+
+WORKDIR /event-gateway
+
+RUN bundle install
+
+EXPOSE 3707
+
+CMD ["/bin/bash"]

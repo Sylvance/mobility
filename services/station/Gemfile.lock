@@ -1,5 +1,8 @@
-PATH
-  remote: ../../packages/ruby/mobility
+GIT
+  remote: https://github.com/Sylvance/mobility.git
+  revision: cee87d6cb98eda7d4442f662a070bc7bfe07443a
+  branch: main
+  glob: packages/ruby/mobility/mobility.gemspec
   specs:
     mobility (0.1.2)
 

@@ -5,4 +5,3 @@ source "https://rubygems.org"
 gem "grpc"
 gem "rake", "~> 13.0"
 gem 'mobility', git: 'https://github.com/Sylvance/mobility.git', branch: 'main', glob: 'packages/ruby/mobility/mobility.gemspec'
-gem 'mobility', git: 'https://github.com/Sylvance/mobility.git', branch: 'main', glob: 'packages/ruby/mobility/mobility.gemspec'
