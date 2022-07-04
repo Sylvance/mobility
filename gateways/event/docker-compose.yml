@@ -11,13 +11,13 @@ services:
       - '9092:9092'
     volumes:
       - .:/event-gateway-kafka
-  gateway:
-    build:
-      context: .
-      dockerfile: Dockerfile.event-gateway
-      args:
-        runner: "gateway"
-    ports:
-      - '3707:3707'
-    volumes:
-      - .:/event-gateway
+  # gateway:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.event-gateway
+  #     args:
+  #       runner: "gateway"
+  #   ports:
+  #     - '3707:3707'
+  #   volumes:
+  #     - .:/event-gateway
