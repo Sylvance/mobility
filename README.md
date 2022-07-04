@@ -55,6 +55,12 @@ The messages in the Kafka event gateway are periodically archived to S3.
 We use gRPC/Protobuf to communicate between internal microservices.
 The Payments service communicates with external payment providers via HTTP/JSON.
 
+The Location, Energy and Distance services have direct access to the Kafka event gateway.
+They store their data in CassandraDB which has fast writes.
+The Location Data is stored in form two fields of latitudes and longitudes. Consideration
+was given to storing location data as a Geohash but no practical benefits would be derived
+from it for this system as we will not use complex proximity computations.
+
 ### Architecture Schematic
 
 Here is the architecture schematic:
