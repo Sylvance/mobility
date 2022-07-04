@@ -29,12 +29,18 @@ Go ahead and explore.
 
 ## System Architecture
 
+### Functional requirements
+
+### Interfaces
+
 We have 4 user interfaces;
 
 - Driver interface.
 - Station operator interface.
 - Station admin interface.
 - Onboard sensors interface.
+
+### Technologies used
 
 The first three communicate over REST/JSON to the API Gateway.
 The last one communicates using Protobufs sent to the Kafka event gateway.
@@ -48,6 +54,8 @@ The messages in the Kafka event gateway are periodically archived to S3.
 
 We use gRPC/Protobuf to communicate between internal microservices.
 The Payments service communicates with external payment providers via HTTP/JSON.
+
+### Architecture Schematic
 
 Here is the architecture schematic:
 

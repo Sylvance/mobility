@@ -1,0 +1,141 @@
+syntax = "proto3";
+
+package mobility.services;
+
+service BatteryEnergyTimeSerieServices {
+    rpc ListBatteryEnergyTimeSeries(ListBatteryEnergyTimeSeriesRequest) returns (ListBatteryEnergyTimeSeriesResponse) {}
+
+    rpc GetBatteryEnergyTimeSerie(GetBatteryEnergyTimeSerieRequest) returns (GetBatteryEnergyTimeSerieResponse) {}
+
+    rpc CreateBatteryEnergyTimeSerie(CreateBatteryEnergyTimeSerieRequest) returns (CreateBatteryEnergyTimeSerieResponse) {}
+
+    rpc UpdateBatteryEnergyTimeSerie(UpdateBatteryEnergyTimeSerieRequest) returns (UpdateBatteryEnergyTimeSerieResponse) {}
+
+    rpc DeleteBatteryEnergyTimeSerie(DeleteBatteryEnergyTimeSerieRequest) returns (DeleteBatteryEnergyTimeSerieResponse) {}
+
+    rpc StartBatteryEnergyTimeSerieDataStreamForFlightID(StartBatteryEnergyTimeSerieDataStreamForFlightIDRequest) returns (StartBatteryEnergyTimeSerieDataStreamForFlightIDResponse) {}
+
+    rpc StopBatteryEnergyTimeSerieDataStreamForFlightID(StopBatteryEnergyTimeSerieDataStreamForFlightIDRequest) returns (StopBatteryEnergyTimeSerieDataStreamForFlightIDResponse) {}
+
+    rpc AggregateBatteryEnergyTimeSerieDataStreamForFlightID(AggregateBatteryEnergyTimeSerieDataStreamForFlightIDRequest) returns (AggregateBatteryEnergyTimeSerieDataStreamForFlightIDResponse) {}
+}
+
+message BatteryEnergyTimeSerie {
+    string battery_energy_time_serie_id = 1;
+    string flight_id = 2;
+    string energy_id = 3;
+    int32 time_serie_delta = 4;
+    string created_at = 5;
+    string modified_on = 6;
+    string deleted_at = 7;
+}
+
+message BatteryEnergyTimeSeriesList {
+    repeated BatteryEnergyTimeSerie battery_energy_time_series = 1;
+}
+
+message BatteryEnergyTimeSerieSuccessResponse {
+    string content = 1;
+    string type = 2;
+}
+
+message BatteryEnergyTimeSerieErrorResponse {
+    repeated string content = 1;
+    string type = 2;
+}
+
+message ListBatteryEnergyTimeSeriesRequest {
+    int32 page_size = 1;
+}
+
+message ListBatteryEnergyTimeSeriesResponse {
+    bool successful = 1;
+    oneof result {
+        BatteryEnergyTimeSerieErrorResponse error = 2;
+        BatteryEnergyTimeSeriesList battery_energy_time_series_list = 3;
+    }
+}
+
+message GetBatteryEnergyTimeSerieRequest {
+    string battery_energy_time_serie_id = 1;
+}
+
+message GetBatteryEnergyTimeSerieResponse {
+    bool successful = 1;
+    oneof result {
+        BatteryEnergyTimeSerieErrorResponse error = 2;
+        BatteryEnergyTimeSerie battery_energy_time_serie = 3;
+    }
+}
+
+message CreateBatteryEnergyTimeSerieRequest {
+    BatteryEnergyTimeSerie battery_energy_time_serie = 1;
+}
+
+message CreateBatteryEnergyTimeSerieResponse {
+    bool successful = 1;
+    oneof result {
+        BatteryEnergyTimeSerieErrorResponse error = 2;
+        BatteryEnergyTimeSerie battery_energy_time_serie = 3;
+    }
+}
+
+message UpdateBatteryEnergyTimeSerieRequest {
+    BatteryEnergyTimeSerie battery_energy_time_serie = 1;
+}
+
+message UpdateBatteryEnergyTimeSerieResponse {
+    bool successful = 1;
+    oneof result {
+        BatteryEnergyTimeSerieErrorResponse error = 2;
+        BatteryEnergyTimeSerie battery_energy_time_serie = 3;
+    }
+}
+
+message DeleteBatteryEnergyTimeSerieRequest {
+    string battery_energy_time_serie_id = 1;
+}
+
+message DeleteBatteryEnergyTimeSerieResponse {
+    bool successful = 1;
+    oneof result {
+        BatteryEnergyTimeSerieErrorResponse error = 2;
+        BatteryEnergyTimeSerieSuccessResponse success = 3;
+    }
+}
+
+message StartBatteryEnergyTimeSerieDataStreamForFlightIDRequest {
+    string flight_id = 1;
+}
+
+message StartBatteryEnergyTimeSerieDataStreamForFlightIDResponse {
+    bool successful = 1;
+    oneof result {
+        BatteryEnergyTimeSerieErrorResponse error = 2;
+        BatteryEnergyTimeSerieSuccessResponse success = 3;
+    }
+}
+
+message StopBatteryEnergyTimeSerieDataStreamForFlightIDRequest {
+    string flight_id = 1;
+}
+
+message StopBatteryEnergyTimeSerieDataStreamForFlightIDResponse {
+    bool successful = 1;
+    oneof result {
+        BatteryEnergyTimeSerieErrorResponse error = 2;
+        BatteryEnergyTimeSerieSuccessResponse success = 3;
+    }
+}
+
+message AggregateBatteryEnergyTimeSerieDataStreamForFlightIDRequest {
+    string flight_id = 1;
+}
+
+message AggregateBatteryEnergyTimeSerieDataStreamForFlightIDResponse {
+    bool successful = 1;
+    oneof result {
+        BatteryEnergyTimeSerieErrorResponse error = 2;
+        BatteryEnergyTimeSerieSuccessResponse success = 3;
+    }
+}

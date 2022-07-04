@@ -1,0 +1,141 @@
+syntax = "proto3";
+
+package mobility.services;
+
+service BatteryLocationTimeSerieServices {
+    rpc ListBatteryLocationTimeSeries(ListBatteryLocationTimeSeriesRequest) returns (ListBatteryLocationTimeSeriesResponse) {}
+
+    rpc GetBatteryLocationTimeSerie(GetBatteryLocationTimeSerieRequest) returns (GetBatteryLocationTimeSerieResponse) {}
+
+    rpc CreateBatteryLocationTimeSerie(CreateBatteryLocationTimeSerieRequest) returns (CreateBatteryLocationTimeSerieResponse) {}
+
+    rpc UpdateBatteryLocationTimeSerie(UpdateBatteryLocationTimeSerieRequest) returns (UpdateBatteryLocationTimeSerieResponse) {}
+
+    rpc DeleteBatteryLocationTimeSerie(DeleteBatteryLocationTimeSerieRequest) returns (DeleteBatteryLocationTimeSerieResponse) {}
+
+    rpc StartBatteryLocationTimeSerieDataStreamForFlightID(StartBatteryLocationTimeSerieDataStreamForFlightIDRequest) returns (StartBatteryLocationTimeSerieDataStreamForFlightIDResponse) {}
+
+    rpc StopBatteryLocationTimeSerieDataStreamForFlightID(StopBatteryLocationTimeSerieDataStreamForFlightIDRequest) returns (StopBatteryLocationTimeSerieDataStreamForFlightIDResponse) {}
+
+    rpc AggregateBatteryLocationTimeSerieDataStreamForFlightID(AggregateBatteryLocationTimeSerieDataStreamForFlightIDRequest) returns (AggregateBatteryLocationTimeSerieDataStreamForFlightIDResponse) {}
+}
+
+message BatteryLocationTimeSerie {
+    string battery_location_time_serie_id = 1;
+    string flight_id = 2;
+    string location_id = 3;
+    int32 time_serie_delta = 4;
+    string created_at = 5;
+    string modified_on = 6;
+    string deleted_at = 7;
+}
+
+message BatteryLocationTimeSeriesList {
+    repeated BatteryLocationTimeSerie battery_location_time_series = 1;
+}
+
+message BatteryLocationTimeSerieSuccessResponse {
+    string content = 1;
+    string type = 2;
+}
+
+message BatteryLocationTimeSerieErrorResponse {
+    repeated string content = 1;
+    string type = 2;
+}
+
+message ListBatteryLocationTimeSeriesRequest {
+    int32 page_size = 1;
+}
+
+message ListBatteryLocationTimeSeriesResponse {
+    bool successful = 1;
+    oneof result {
+        BatteryLocationTimeSerieErrorResponse error = 2;
+        BatteryLocationTimeSeriesList battery_location_time_series_list = 3;
+    }
+}
+
+message GetBatteryLocationTimeSerieRequest {
+    string battery_location_time_serie_id = 1;
+}
+
+message GetBatteryLocationTimeSerieResponse {
+    bool successful = 1;
+    oneof result {
+        BatteryLocationTimeSerieErrorResponse error = 2;
+        BatteryLocationTimeSerie battery_location_time_serie = 3;
+    }
+}
+
+message CreateBatteryLocationTimeSerieRequest {
+    BatteryLocationTimeSerie battery_location_time_serie = 1;
+}
+
+message CreateBatteryLocationTimeSerieResponse {
+    bool successful = 1;
+    oneof result {
+        BatteryLocationTimeSerieErrorResponse error = 2;
+        BatteryLocationTimeSerie battery_location_time_serie = 3;
+    }
+}
+
+message UpdateBatteryLocationTimeSerieRequest {
+    BatteryLocationTimeSerie battery_location_time_serie = 1;
+}
+
+message UpdateBatteryLocationTimeSerieResponse {
+    bool successful = 1;
+    oneof result {
+        BatteryLocationTimeSerieErrorResponse error = 2;
+        BatteryLocationTimeSerie battery_location_time_serie = 3;
+    }
+}
+
+message DeleteBatteryLocationTimeSerieRequest {
+    string battery_location_time_serie_id = 1;
+}
+
+message DeleteBatteryLocationTimeSerieResponse {
+    bool successful = 1;
+    oneof result {
+        BatteryLocationTimeSerieErrorResponse error = 2;
+        BatteryLocationTimeSerieSuccessResponse success = 3;
+    }
+}
+
+message StartBatteryLocationTimeSerieDataStreamForFlightIDRequest {
+    string flight_id = 1;
+}
+
+message StartBatteryLocationTimeSerieDataStreamForFlightIDResponse {
+    bool successful = 1;
+    oneof result {
+        BatteryLocationTimeSerieErrorResponse error = 2;
+        BatteryLocationTimeSerieSuccessResponse success = 3;
+    }
+}
+
+message StopBatteryLocationTimeSerieDataStreamForFlightIDRequest {
+    string flight_id = 1;
+}
+
+message StopBatteryLocationTimeSerieDataStreamForFlightIDResponse {
+    bool successful = 1;
+    oneof result {
+        BatteryLocationTimeSerieErrorResponse error = 2;
+        BatteryLocationTimeSerieSuccessResponse success = 3;
+    }
+}
+
+message AggregateBatteryLocationTimeSerieDataStreamForFlightIDRequest {
+    string flight_id = 1;
+}
+
+message AggregateBatteryLocationTimeSerieDataStreamForFlightIDResponse {
+    bool successful = 1;
+    oneof result {
+        BatteryLocationTimeSerieErrorResponse error = 2;
+        BatteryLocationTimeSerieSuccessResponse success = 3;
+    }
+}
